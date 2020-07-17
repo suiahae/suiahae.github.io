@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>Qianying&#39;s Balcony</title>
+  
+  <subtitle>浅影/棈桜的阳台/博客</subtitle>
+  <link href="/atom.xml" rel="self"/>
+  
+  <link href="https://suiahae.me/"/>
+  <updated>2020-07-17T14:49:56.859Z</updated>
+  <id>https://suiahae.me/</id>
+  
+  <author>
+    <name>Qianying</name>
+    
+  </author>
+  
+  <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>最新版 conda 使用报错的解决办法</title>
+    <link href="https://suiahae.me/new-conda-using-error/"/>
+    <id>https://suiahae.me/new-conda-using-error/</id>
+    <published>2020-02-29T10:54:37.000Z</published>
+    <updated>2020-07-17T14:49:56.859Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="The-solution-to-the-error-when-using-the-new-version-of-conda"><a href="#The-solution-to-the-error-when-using-the-new-version-of-conda" class="headerlink" title="The solution to the error when using the new version of conda"></a>The solution to the error when using the new version of conda</h1><h2 id="Changelog"><a href="#Changelog" class="headerlink" title="Changelog"></a>Changelog</h2><h3 id="date-2020-04-03"><a href="#date-2020-04-03" class="headerlink" title="date: 2020-04-03"></a>date: 2020-04-03</h3><p><strong>Changed</strong></p><ul><li>change categories</li></ul><h2 id="1-引言"><a href="#1-引言" class="headerlink" title="1. 引言"></a>1. 引言</h2><p>最近在更新 conda 后, 使用 <code>conda install</code>安装包时, 会报 <code>Solving environment: failed with initial frozen solve. Retrying with flexible solve.</code> 的错误. </p><p><img src="image-20200229191612036.png" alt="image-20200229191612036"></p><p>最后在 GitHub 发现了解决办法<a href="https://github.com/conda/conda/issues/9367" target="_blank" rel="noopener">1</a>,</p><h2 id="2-问题复现"><a href="#2-问题复现" class="headerlink" title="2. 问题复现"></a>2. 问题复现</h2><p>这个错误在 conda 4.7.12 和 最新的 conda 4.8.2 中均有出现。( Windows )</p><p>使用 <code>conda install</code>安装其他包时, 将会出现上述问题。然而在创建一个环境时可以正常安装（例如：<code>conda create -n tensorflow_env tensorflow</code>）。</p><h2 id="3-解决办法"><a href="#3-解决办法" class="headerlink" title="3. 解决办法"></a>3. 解决办法</h2><p>目前解决方案有两个，将 conda 降级、或使用 pip。</p><h3 id="3-1-将-conda-降级"><a href="#3-1-将-conda-降级" class="headerlink" title="3.1 将 conda 降级"></a>3.1 将 conda 降级</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 设置 conda 试允许降级</span></span><br><span class="line">conda config --<span class="built_in">set</span> allow_conda_downgrades <span class="literal">true</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 降级 conda 为 4.6 版</span></span><br><span class="line">conda install conda=4.6</span><br><span class="line">( 或 conda install -n root conda=4.6)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 不允许 conda 自动升级</span></span><br><span class="line">conda config --<span class="built_in">set</span> auto_update_conda <span class="literal">false</span></span><br></pre></td></tr></table></figure><h3 id="3-2-使用-pip"><a href="#3-2-使用-pip" class="headerlink" title="3.2 使用 pip"></a>3.2 使用 pip</h3><p>由于 pip 和 conda 不兼容，建议在单独的环境下使用 pip。不要与 conda 混用。</p><hr><p>GitHub 有人反映降级 conda 并不能解决问题 :)</p><p>建议跟踪此 issue <a href="https://github.com/conda/conda/issues/9367" target="_blank" rel="noopener">https://github.com/conda/conda/issues/9367</a></p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h1 id=&quot;The-solution-to-the-error-when-using-the-new-version-of-conda&quot;&gt;&lt;a href=&quot;#The-solution-to-the-error-when-using-the-new-version-of-con
+      
+    
+    </summary>
+    
+    
+      <category term="Errors&amp;Solutions" scheme="https://suiahae.me/categories/Errors-Solutions/"/>
+    
+      <category term="conda" scheme="https://suiahae.me/categories/Errors-Solutions/conda/"/>
+    
+    
+      <category term="conda" scheme="https://suiahae.me/tags/conda/"/>
+    
+      <category term="anaconda" scheme="https://suiahae.me/tags/anaconda/"/>
+    
+  </entry>
+  
+</feed>
