@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://suiahae.me/"/>
-  <updated>2020-08-10T08:36:53.134Z</updated>
+  <updated>2020-08-24T07:22:32.145Z</updated>
   <id>https://suiahae.me/</id>
   
   <author>
@@ -17,30 +17,30 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>如何在FireFox“安装”网页应用</title>
-    <link href="https://suiahae.me/How-to-install-a-web-application-on-FireFox/"/>
-    <id>https://suiahae.me/How-to-install-a-web-application-on-FireFox/</id>
-    <published>2020-08-10T08:16:42.000Z</published>
-    <updated>2020-08-10T08:36:53.134Z</updated>
+    <title>[强化学习] ε-贪心算法中的最优解的分布函数</title>
+    <link href="https://suiahae.me/Reinforcement-learning-Distribution-function-of-the-optimal-solution-in-Epsilon-Greedy/"/>
+    <id>https://suiahae.me/Reinforcement-learning-Distribution-function-of-the-optimal-solution-in-Epsilon-Greedy/</id>
+    <published>2020-08-24T07:13:52.000Z</published>
+    <updated>2020-08-24T07:22:32.145Z</updated>
     
-    <content type="html"><![CDATA[<h1 id="How-to-“install”-a-web-application-on-FireFox"><a href="#How-to-“install”-a-web-application-on-FireFox" class="headerlink" title="How to “install” a web application on FireFox"></a>How to “install” a web application on FireFox</h1><img src="firefoxandpwa.png" alt="无标题" style="zoom: 50%;" /><p>PWA的出现使我们能够把网页如同一个应用般安装在系统上。这缓解了Linux软件的匮乏，也方便了我们办公和日常使用。在PC端目前只有Chromium系浏览器有这完整的PWA支持，FireFox相应功能的开发还遥遥无期。现在我们可以通过”Single Site Browser“来达到类似的体验。</p><h3 id="一-启用FireFox的“Single-Site-Browser”特性："><a href="#一-启用FireFox的“Single-Site-Browser”特性：" class="headerlink" title="一. 启用FireFox的“Single Site Browser”特性："></a>一. 启用FireFox的“Single Site Browser”特性：</h3><ol><li><p>在新选项卡中，在地址栏中输入 <code>about:config</code>，然后按Enter键。 单击接受风险的按钮。    </p></li><li><p>在页面的搜索框中输入”ssd“。</p></li><li><p>双击”browser.ssb.enabled”，将值从false改为true。</p></li><li><p>重启FireFox</p></li></ol><h3 id="二-使用参数“–ssb”打开网址："><a href="#二-使用参数“–ssb”打开网址：" class="headerlink" title="二. 使用参数“–ssb”打开网址："></a>二. 使用参数“–ssb”打开网址：</h3><ul><li><p>Linux：</p><p><code>firefox -ssb https://www.google.com</code></p></li><li><p>WIndows：</p><p><code>&quot;C:\Program Files\Mozilla Firefox\firefox.exe&quot; -ssb https://www.google.com</code></p></li></ul><h3 id="三-创建快捷方式："><a href="#三-创建快捷方式：" class="headerlink" title="三. 创建快捷方式："></a>三. 创建快捷方式：</h3><ul><li><p>Linux：</p><p>添加gnome桌面图标，在.local/share/applications新建.desktop文件。</p></li><li><p>Windows：</p><p>右键新建快捷方式并在路径内填入“二”中的命令。</p></li></ul><p><em><a href="https://support.mozilla.org/zh-CN/questions/1292666" target="_blank" rel="noopener">https://support.mozilla.org/zh-CN/questions/1292666</a></em><br><em><a href="https://images.app.goo.gl/Max7LhsrzkM3eCHj8" target="_blank" rel="noopener">https://images.app.goo.gl/Max7LhsrzkM3eCHj8</a></em><br><em><a href="https://images.app.goo.gl/hbWM2WTEgsZK8uzT8" target="_blank" rel="noopener">https://images.app.goo.gl/hbWM2WTEgsZK8uzT8</a></em></p>]]></content>
+    <content type="html"><![CDATA[<h1 id="Reinforcement-learning-Distribution-function-of-the-optimal-solution-in-Epsilon-Greedy"><a href="#Reinforcement-learning-Distribution-function-of-the-optimal-solution-in-Epsilon-Greedy" class="headerlink" title="[Reinforcement learning] Distribution function of the optimal solution in Epsilon-Greedy"></a>[Reinforcement learning] Distribution function of the optimal solution in Epsilon-Greedy</h1><p>任一环节，解集（动作集）A={解1，解2，解3，……，解i，……，解n-1，解n}，其中|A|=n。</p><p>不妨假定最优解为x。</p><p>​    在选择解时，按照概率有两种选择策略：</p><p>​        其一，均匀随机选择，也叫非贪心选择，选用此策略的概率为ε。</p><p>​        其二，直接选择最优解，也叫贪心选择，选用此策略的概率为1-ε。</p><p>现在我们需要解出在此环节中每个解被选中的概率分布。</p><ol><li>在均匀随机选择（非贪心选择）的情况下，每个解被选中的概率为ε/|A|（包括最优解“x”和A中其他非最优解）。即在均匀随机选择（非贪心选择）的情况下，最优解“x”被选中的概率为ε/|A|，每一个非最优解被选中的概率也是ε/|A|。</li><li>在直接选择最优解（贪心选择）的情况下，最优解“x”被选择的概率为1-ε，其他非最优解被选中的概率为0。</li></ol><p>故最优解“x”被选中的概率为1-ε+ε/|A|。则概率分布函数为</p><p><img src="image-20200824152221326.png" alt="image-20200824152221326"></p><!-- $$F(x)=\left\{\begin{matrix}1-\varepsilon +\frac{\varepsilon }{\left | A \right |}&，x是最优解\\ \frac{\varepsilon }{\left | A \right |}&，x不是最优解\end{matrix}\right.$$ -->]]></content>
     
     <summary type="html">
     
       
       
-        &lt;h1 id=&quot;How-to-“install”-a-web-application-on-FireFox&quot;&gt;&lt;a href=&quot;#How-to-“install”-a-web-application-on-FireFox&quot; class=&quot;headerlink&quot; title=&quot;Ho
+        &lt;h1 id=&quot;Reinforcement-learning-Distribution-function-of-the-optimal-solution-in-Epsilon-Greedy&quot;&gt;&lt;a href=&quot;#Reinforcement-learning-Distributio
       
     
     </summary>
     
     
-      <category term="Handbooks" scheme="https://suiahae.me/categories/Handbooks/"/>
+      <category term="Algorithm" scheme="https://suiahae.me/categories/Algorithm/"/>
     
-      <category term="Linux" scheme="https://suiahae.me/categories/Handbooks/Linux/"/>
+      <category term="machine learning" scheme="https://suiahae.me/categories/Algorithm/machine-learning/"/>
     
     
-      <category term="FireFox" scheme="https://suiahae.me/tags/FireFox/"/>
+      <category term="AI" scheme="https://suiahae.me/tags/AI/"/>
     
   </entry>
   
