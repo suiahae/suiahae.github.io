@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://suiahae.me/"/>
-  <updated>2020-08-24T07:22:32.145Z</updated>
+  <updated>2020-11-12T14:25:10.439Z</updated>
   <id>https://suiahae.me/</id>
   
   <author>
@@ -17,30 +17,30 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>[强化学习] ε-贪心算法中的最优解的分布函数</title>
-    <link href="https://suiahae.me/Reinforcement-learning-Distribution-function-of-the-optimal-solution-in-Epsilon-Greedy/"/>
-    <id>https://suiahae.me/Reinforcement-learning-Distribution-function-of-the-optimal-solution-in-Epsilon-Greedy/</id>
-    <published>2020-08-24T07:13:52.000Z</published>
-    <updated>2020-08-24T07:22:32.145Z</updated>
+    <title>免费在 Microsoft WSL 上使用 fedora 33</title>
+    <link href="https://suiahae.me/Using-Fedora-33-on-Windows-10-WSL2/"/>
+    <id>https://suiahae.me/Using-Fedora-33-on-Windows-10-WSL2/</id>
+    <published>2020-11-12T13:49:11.000Z</published>
+    <updated>2020-11-12T14:25:10.439Z</updated>
     
-    <content type="html"><![CDATA[<h1 id="Reinforcement-learning-Distribution-function-of-the-optimal-solution-in-Epsilon-Greedy"><a href="#Reinforcement-learning-Distribution-function-of-the-optimal-solution-in-Epsilon-Greedy" class="headerlink" title="[Reinforcement learning] Distribution function of the optimal solution in Epsilon-Greedy"></a>[Reinforcement learning] Distribution function of the optimal solution in Epsilon-Greedy</h1><p>任一环节，解集（动作集）A={解1，解2，解3，……，解i，……，解n-1，解n}，其中|A|=n。</p><p>不妨假定最优解为x。</p><p>​    在选择解时，按照概率有两种选择策略：</p><p>​        其一，均匀随机选择，也叫非贪心选择，选用此策略的概率为ε。</p><p>​        其二，直接选择最优解，也叫贪心选择，选用此策略的概率为1-ε。</p><p>现在我们需要解出在此环节中每个解被选中的概率分布。</p><ol><li>在均匀随机选择（非贪心选择）的情况下，每个解被选中的概率为ε/|A|（包括最优解“x”和A中其他非最优解）。即在均匀随机选择（非贪心选择）的情况下，最优解“x”被选中的概率为ε/|A|，每一个非最优解被选中的概率也是ε/|A|。</li><li>在直接选择最优解（贪心选择）的情况下，最优解“x”被选择的概率为1-ε，其他非最优解被选中的概率为0。</li></ol><p>故最优解“x”被选中的概率为1-ε+ε/|A|。则概率分布函数为</p><p><img src="image-20200824152221326.png" alt="image-20200824152221326"></p><!-- $$F(x)=\left\{\begin{matrix}1-\varepsilon +\frac{\varepsilon }{\left | A \right |}&，x是最优解\\ \frac{\varepsilon }{\left | A \right |}&，x不是最优解\end{matrix}\right.$$ -->]]></content>
+    <content type="html"><![CDATA[<h1 id="Using-Fedora-33-on-Windows-10-WSL2"><a href="#Using-Fedora-33-on-Windows-10-WSL2" class="headerlink" title="Using Fedora 33 on Windows 10 WSL2"></a>Using Fedora 33 on Windows 10 WSL2</h1><img src="wsl-fedora33-816x345.jpg" alt="wsl-fedora33" style="zoom: 100%;" /><p>喜欢 fedora 的小伙伴可能苦恼过这样一件事：为什么在 Microsoft Store 上 Ubuntu for WSL 是免费的，而 <a href="https://www.microsoft.com/zh-cn/p/fedora-remix-for-wsl/9n6gdm4k2hnc?activetab=pivot:overviewtab" target="_blank" rel="noopener">Fedora Remix for WSL</a> 却需要 71 大洋（点名批评 Whitewater Foundry）。</p><p>现在把它抛在脑后吧，简单几步，用上“白嫖”的 fedora for WSL：</p><p><strong>以下内容译自 <a href="https://fedoramagazine.org/wsl-fedora-33/" target="_blank" rel="noopener">Using Fedora 33 with Microsoft’s WSL2 - Fedora Magazine</a></strong></p><h2 id="1-安装-Fedora-for-WSL"><a href="#1-安装-Fedora-for-WSL" class="headerlink" title="1. 安装 Fedora for WSL"></a>1. 安装 Fedora for WSL</h2><h3 id="1-1-下载-Fedora-33-rootfs"><a href="#1-1-下载-Fedora-33-rootfs" class="headerlink" title="1.1 下载 Fedora 33 rootfs"></a>1.1 下载 Fedora 33 rootfs</h3><ol><li><p>下载地址:<br><a href="https://raw.githubusercontent.com/fedora-cloud/docker-brew-fedora/33/x86_64/fedora-33.20201110-x86_64.tar.xz" target="_blank" rel="noopener">https://raw.githubusercontent.com/fedora-cloud/docker-brew-fedora/33/x86_64/fedora-33.20201110-x86_64.tar.xz</a></p></li><li><p>解压但不解包，使文件以 tar 结尾</p></li></ol><h3 id="1-2-导入-Fedora-33"><a href="#1-2-导入-Fedora-33" class="headerlink" title="1.2 导入 Fedora 33"></a>1.2 导入 Fedora 33</h3><ol><li><p>建立安装目录，例如 c:\distros</p></li><li><p>打开 cmd 或 powershell，导入</p><figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wsl.exe -<span class="literal">-import</span> Fedora<span class="literal">-33</span> c:\distros\Fedora<span class="literal">-33</span> <span class="variable">$HOME</span>\Downloads\fedora<span class="literal">-33</span>.tar</span><br></pre></td></tr></table></figure></li><li><p>查看 Fedora-33 是否导入</p><figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">PS C:\Users\jperrin&gt; wsl.exe <span class="literal">-l</span> <span class="literal">-v</span></span><br><span class="line">  NAME                   STATE           VERSION</span><br><span class="line">  Fedora<span class="literal">-33</span>                 Stopped         <span class="number">2</span></span><br></pre></td></tr></table></figure></li><li><p>启动（以 root 用户）</p><figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wsl <span class="literal">-d</span> Fedora<span class="literal">-33</span></span><br></pre></td></tr></table></figure></li><li><p>安装必要软件包</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">dnf update</span><br><span class="line">dnf install wget curl sudo ncurses dnf-plugins-core dnf-utils passwd findutils</span><br></pre></td></tr></table></figure></li></ol><h2 id="2-为-feodra-添加用户"><a href="#2-为-feodra-添加用户" class="headerlink" title="2. 为 feodra 添加用户"></a>2. 为 feodra 添加用户</h2><ol><li><p>在 Fedora-33 WSL 中输入以下命令：</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">useradd -G wheel yourusername</span><br><span class="line">passwd yourusername</span><br></pre></td></tr></table></figure></li><li><p>测试用户可用性</p><p>退出 wsl 并以 yourusername 登陆</p><figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">wsl <span class="literal">-d</span> Fedora<span class="literal">-33</span> <span class="literal">-u</span> yourusername</span><br><span class="line"><span class="variable">$id</span> <span class="literal">-u</span></span><br><span class="line"><span class="number">1000</span></span><br><span class="line"><span class="variable">$</span> sudo cat /etc/shadow</span><br></pre></td></tr></table></figure></li><li><p>一切正常后在 powershell 设置 yourusername 为默认用户</p><figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">Get-ItemProperty</span> Registry::HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Lxss\*\ DistributionName | <span class="built_in">Where-Object</span> <span class="literal">-Property</span> DistributionName <span class="operator">-eq</span> Fedora<span class="literal">-33</span>  | <span class="built_in">Set-ItemProperty</span> <span class="literal">-Name</span> DefaultUid <span class="literal">-Value</span> <span class="number">1000</span></span><br></pre></td></tr></table></figure></li></ol><h2 id="3-启用-Windows-集成-可选"><a href="#3-启用-Windows-集成-可选" class="headerlink" title="3. 启用 Windows 集成 [可选]"></a>3. 启用 Windows 集成 [可选]</h2><p>在 wsl 中添加 trustywolf/wslu</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo dnf copr <span class="built_in">enable</span> trustywolf/wslu</span><br></pre></td></tr></table></figure>]]></content>
     
     <summary type="html">
     
       
       
-        &lt;h1 id=&quot;Reinforcement-learning-Distribution-function-of-the-optimal-solution-in-Epsilon-Greedy&quot;&gt;&lt;a href=&quot;#Reinforcement-learning-Distributio
+        &lt;h1 id=&quot;Using-Fedora-33-on-Windows-10-WSL2&quot;&gt;&lt;a href=&quot;#Using-Fedora-33-on-Windows-10-WSL2&quot; class=&quot;headerlink&quot; title=&quot;Using Fedora 33 on Windo
       
     
     </summary>
     
     
-      <category term="Algorithm" scheme="https://suiahae.me/categories/Algorithm/"/>
+      <category term="Handbooks" scheme="https://suiahae.me/categories/Handbooks/"/>
     
-      <category term="machine learning" scheme="https://suiahae.me/categories/Algorithm/machine-learning/"/>
+      <category term="Windows" scheme="https://suiahae.me/categories/Handbooks/Windows/"/>
     
     
-      <category term="AI" scheme="https://suiahae.me/tags/AI/"/>
+      <category term="WSL2" scheme="https://suiahae.me/tags/WSL2/"/>
     
   </entry>
   
