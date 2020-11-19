@@ -9,14 +9,14 @@
     <meta name="google-site-verification" content="lvyAlGlLiE0qiJrzn6oA_45GOBvNImfUeIAZ35vjf-4" />
     <meta name="description" content="Using Fedora 33 on Windows 10 WSL2  喜欢 fedora 的小伙伴可能苦恼过这样一件事：为什么在 Microsoft Store 上 Ubuntu for WSL 是免费的，而 Fedora Remix for WSL 却需要 71 大洋（点名批评 Whitewater Foundry）。 现在把它抛在脑后吧，简单几步，用上“白嫖”的 fedora for WSL">
 <meta property="og:type" content="article">
-<meta property="og:title" content="免费在 Microsoft WSL 上使用 fedora 33">
+<meta property="og:title" content="免费在 Microsoft WSL2 上使用 fedora 33">
 <meta property="og:url" content="https://suiahae.me/Using-Fedora-33-on-Windows-10-WSL2/index.html">
 <meta property="og:site_name" content="Qianying&#39;s Balcony">
 <meta property="og:description" content="Using Fedora 33 on Windows 10 WSL2  喜欢 fedora 的小伙伴可能苦恼过这样一件事：为什么在 Microsoft Store 上 Ubuntu for WSL 是免费的，而 Fedora Remix for WSL 却需要 71 大洋（点名批评 Whitewater Foundry）。 现在把它抛在脑后吧，简单几步，用上“白嫖”的 fedora for WSL">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://suiahae.me/Using-Fedora-33-on-Windows-10-WSL2/wsl-fedora33-816x345.jpg">
 <meta property="article:published_time" content="2020-11-12T13:49:11.000Z">
-<meta property="article:modified_time" content="2020-11-12T14:25:10.439Z">
+<meta property="article:modified_time" content="2020-11-19T08:32:50.624Z">
 <meta property="article:author" content="Qianying">
 <meta property="article:tag" content="WSL2">
 <meta name="twitter:card" content="summary">
@@ -40,7 +40,7 @@
         
     
     <!-- title -->
-    <title>免费在 Microsoft WSL 上使用 fedora 33</title>
+    <title>免费在 Microsoft WSL2 上使用 fedora 33</title>
     <!-- styles -->
     
 <link rel="stylesheet" href="/css/style.css">
@@ -100,15 +100,15 @@
     <div id="share" style="display: none">
       <ul>
   <li><a class="icon" href="http://www.facebook.com/sharer.php?u=https://suiahae.me/Using-Fedora-33-on-Windows-10-WSL2/" target="_blank" rel="noopener"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://twitter.com/share?url=https://suiahae.me/Using-Fedora-33-on-Windows-10-WSL2/&text=免费在 Microsoft WSL 上使用 fedora 33" target="_blank" rel="noopener"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=https://suiahae.me/Using-Fedora-33-on-Windows-10-WSL2/&title=免费在 Microsoft WSL 上使用 fedora 33" target="_blank" rel="noopener"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=https://suiahae.me/Using-Fedora-33-on-Windows-10-WSL2/&is_video=false&description=免费在 Microsoft WSL 上使用 fedora 33" target="_blank" rel="noopener"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="mailto:?subject=免费在 Microsoft WSL 上使用 fedora 33&body=Check out this article: https://suiahae.me/Using-Fedora-33-on-Windows-10-WSL2/"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://getpocket.com/save?url=https://suiahae.me/Using-Fedora-33-on-Windows-10-WSL2/&title=免费在 Microsoft WSL 上使用 fedora 33" target="_blank" rel="noopener"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://reddit.com/submit?url=https://suiahae.me/Using-Fedora-33-on-Windows-10-WSL2/&title=免费在 Microsoft WSL 上使用 fedora 33" target="_blank" rel="noopener"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=https://suiahae.me/Using-Fedora-33-on-Windows-10-WSL2/&title=免费在 Microsoft WSL 上使用 fedora 33" target="_blank" rel="noopener"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://digg.com/submit?url=https://suiahae.me/Using-Fedora-33-on-Windows-10-WSL2/&title=免费在 Microsoft WSL 上使用 fedora 33" target="_blank" rel="noopener"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.tumblr.com/share/link?url=https://suiahae.me/Using-Fedora-33-on-Windows-10-WSL2/&name=免费在 Microsoft WSL 上使用 fedora 33&description=" target="_blank" rel="noopener"><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=https://suiahae.me/Using-Fedora-33-on-Windows-10-WSL2/&text=免费在 Microsoft WSL2 上使用 fedora 33" target="_blank" rel="noopener"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=https://suiahae.me/Using-Fedora-33-on-Windows-10-WSL2/&title=免费在 Microsoft WSL2 上使用 fedora 33" target="_blank" rel="noopener"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=https://suiahae.me/Using-Fedora-33-on-Windows-10-WSL2/&is_video=false&description=免费在 Microsoft WSL2 上使用 fedora 33" target="_blank" rel="noopener"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=免费在 Microsoft WSL2 上使用 fedora 33&body=Check out this article: https://suiahae.me/Using-Fedora-33-on-Windows-10-WSL2/"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=https://suiahae.me/Using-Fedora-33-on-Windows-10-WSL2/&title=免费在 Microsoft WSL2 上使用 fedora 33" target="_blank" rel="noopener"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=https://suiahae.me/Using-Fedora-33-on-Windows-10-WSL2/&title=免费在 Microsoft WSL2 上使用 fedora 33" target="_blank" rel="noopener"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=https://suiahae.me/Using-Fedora-33-on-Windows-10-WSL2/&title=免费在 Microsoft WSL2 上使用 fedora 33" target="_blank" rel="noopener"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=https://suiahae.me/Using-Fedora-33-on-Windows-10-WSL2/&title=免费在 Microsoft WSL2 上使用 fedora 33" target="_blank" rel="noopener"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=https://suiahae.me/Using-Fedora-33-on-Windows-10-WSL2/&name=免费在 Microsoft WSL2 上使用 fedora 33&description=" target="_blank" rel="noopener"><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
 </ul>
 
     </div>
@@ -125,7 +125,7 @@
   <header>
     
     <h1 class="posttitle" itemprop="name headline">
-        免费在 Microsoft WSL 上使用 fedora 33
+        免费在 Microsoft WSL2 上使用 fedora 33
     </h1>
 
 
@@ -239,15 +239,15 @@
     <div id="share-footer" style="display: none">
       <ul>
   <li><a class="icon" href="http://www.facebook.com/sharer.php?u=https://suiahae.me/Using-Fedora-33-on-Windows-10-WSL2/" target="_blank" rel="noopener"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://twitter.com/share?url=https://suiahae.me/Using-Fedora-33-on-Windows-10-WSL2/&text=免费在 Microsoft WSL 上使用 fedora 33" target="_blank" rel="noopener"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=https://suiahae.me/Using-Fedora-33-on-Windows-10-WSL2/&title=免费在 Microsoft WSL 上使用 fedora 33" target="_blank" rel="noopener"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=https://suiahae.me/Using-Fedora-33-on-Windows-10-WSL2/&is_video=false&description=免费在 Microsoft WSL 上使用 fedora 33" target="_blank" rel="noopener"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="mailto:?subject=免费在 Microsoft WSL 上使用 fedora 33&body=Check out this article: https://suiahae.me/Using-Fedora-33-on-Windows-10-WSL2/"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://getpocket.com/save?url=https://suiahae.me/Using-Fedora-33-on-Windows-10-WSL2/&title=免费在 Microsoft WSL 上使用 fedora 33" target="_blank" rel="noopener"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://reddit.com/submit?url=https://suiahae.me/Using-Fedora-33-on-Windows-10-WSL2/&title=免费在 Microsoft WSL 上使用 fedora 33" target="_blank" rel="noopener"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=https://suiahae.me/Using-Fedora-33-on-Windows-10-WSL2/&title=免费在 Microsoft WSL 上使用 fedora 33" target="_blank" rel="noopener"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://digg.com/submit?url=https://suiahae.me/Using-Fedora-33-on-Windows-10-WSL2/&title=免费在 Microsoft WSL 上使用 fedora 33" target="_blank" rel="noopener"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.tumblr.com/share/link?url=https://suiahae.me/Using-Fedora-33-on-Windows-10-WSL2/&name=免费在 Microsoft WSL 上使用 fedora 33&description=" target="_blank" rel="noopener"><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=https://suiahae.me/Using-Fedora-33-on-Windows-10-WSL2/&text=免费在 Microsoft WSL2 上使用 fedora 33" target="_blank" rel="noopener"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=https://suiahae.me/Using-Fedora-33-on-Windows-10-WSL2/&title=免费在 Microsoft WSL2 上使用 fedora 33" target="_blank" rel="noopener"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=https://suiahae.me/Using-Fedora-33-on-Windows-10-WSL2/&is_video=false&description=免费在 Microsoft WSL2 上使用 fedora 33" target="_blank" rel="noopener"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=免费在 Microsoft WSL2 上使用 fedora 33&body=Check out this article: https://suiahae.me/Using-Fedora-33-on-Windows-10-WSL2/"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=https://suiahae.me/Using-Fedora-33-on-Windows-10-WSL2/&title=免费在 Microsoft WSL2 上使用 fedora 33" target="_blank" rel="noopener"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=https://suiahae.me/Using-Fedora-33-on-Windows-10-WSL2/&title=免费在 Microsoft WSL2 上使用 fedora 33" target="_blank" rel="noopener"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=https://suiahae.me/Using-Fedora-33-on-Windows-10-WSL2/&title=免费在 Microsoft WSL2 上使用 fedora 33" target="_blank" rel="noopener"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=https://suiahae.me/Using-Fedora-33-on-Windows-10-WSL2/&title=免费在 Microsoft WSL2 上使用 fedora 33" target="_blank" rel="noopener"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=https://suiahae.me/Using-Fedora-33-on-Windows-10-WSL2/&name=免费在 Microsoft WSL2 上使用 fedora 33&description=" target="_blank" rel="noopener"><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
 </ul>
 
     </div>
