@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang=zh>
+<head>
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="google-site-verification" content="lvyAlGlLiE0qiJrzn6oA_45GOBvNImfUeIAZ35vjf-4" />
+    <meta name="description" content="The solution to the error when using the new version of condaChangelogdate: 2020-04-03Changed  change categories  1. 引言最近在更新 conda 后, 使用 conda install安装包时, 会报 Solving environment: failed with initial">
+<meta property="og:type" content="article">
+<meta property="og:title" content="最新版 conda 使用报错的解决办法">
+<meta property="og:url" content="https://suiahae.me/new-conda-using-error/index.html">
+<meta property="og:site_name" content="Qianying&#39;s Balcony">
+<meta property="og:description" content="The solution to the error when using the new version of condaChangelogdate: 2020-04-03Changed  change categories  1. 引言最近在更新 conda 后, 使用 conda install安装包时, 会报 Solving environment: failed with initial">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://suiahae.me/new-conda-using-error/image-20200229191612036.png">
+<meta property="article:published_time" content="2020-02-29T10:54:37.000Z">
+<meta property="article:modified_time" content="2020-07-17T14:49:56.859Z">
+<meta property="article:author" content="Qianying">
+<meta property="article:tag" content="conda">
+<meta property="article:tag" content="anaconda">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://suiahae.me/new-conda-using-error/image-20200229191612036.png">
+    
+    
+        
+          
+              <link rel="shortcut icon" href="/images/favicon.ico">
+          
+        
+        
+          
+            <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+          
+        
+        
+          
+            <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+          
+        
+    
+    <!-- title -->
+    <title>最新版 conda 使用报错的解决办法</title>
+    <!-- styles -->
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    <!-- persian styles -->
+    
+      
+<link rel="stylesheet" href="/css/rtl.css">
+
+    
+    <!-- rss -->
+    
+    
+<meta name="generator" content="Hexo 4.2.1"><link rel="alternate" href="/atom.xml" title="Qianying's Balcony" type="application/atom+xml">
+</head>
+
+<body class="max-width mx-auto px3 ltr">
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fas fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+         
+          <li><a href="/">首页</a></li>
+         
+          <li><a href="/about/">关于</a></li>
+         
+          <li><a href="/archives/">归档</a></li>
+         
+          <li><a href="/categories/">分类</a></li>
+         
+          <li><a href="https://github.com/probberechts/hexo-theme-cactus" target="_blank" rel="noopener">项目</a></li>
+         
+          <li><a href="/atom.xml">RSS</a></li>
+        
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        <li><a class="icon" href="/jupyter-s-guide/"><i class="fas fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i></a></li>
+        
+        
+        <li><a class="icon" href="/yay-s-guide-No-2-proxy-issues/"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        
+        <li><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" href="#"><i class="fas fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">上一篇</span>
+      <span id="i-next" class="info" style="display:none;">下一篇</span>
+      <span id="i-top" class="info" style="display:none;">返回顶部</span>
+      <span id="i-share" class="info" style="display:none;">分享文章</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=https://suiahae.me/new-conda-using-error/" target="_blank" rel="noopener"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=https://suiahae.me/new-conda-using-error/&text=最新版 conda 使用报错的解决办法" target="_blank" rel="noopener"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=https://suiahae.me/new-conda-using-error/&title=最新版 conda 使用报错的解决办法" target="_blank" rel="noopener"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=https://suiahae.me/new-conda-using-error/&is_video=false&description=最新版 conda 使用报错的解决办法" target="_blank" rel="noopener"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=最新版 conda 使用报错的解决办法&body=Check out this article: https://suiahae.me/new-conda-using-error/"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=https://suiahae.me/new-conda-using-error/&title=最新版 conda 使用报错的解决办法" target="_blank" rel="noopener"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=https://suiahae.me/new-conda-using-error/&title=最新版 conda 使用报错的解决办法" target="_blank" rel="noopener"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=https://suiahae.me/new-conda-using-error/&title=最新版 conda 使用报错的解决办法" target="_blank" rel="noopener"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=https://suiahae.me/new-conda-using-error/&title=最新版 conda 使用报错的解决办法" target="_blank" rel="noopener"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=https://suiahae.me/new-conda-using-error/&name=最新版 conda 使用报错的解决办法&description=" target="_blank" rel="noopener"><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    <div id="toc">
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#The-solution-to-the-error-when-using-the-new-version-of-conda"><span class="toc-number">1.</span> <span class="toc-text">The solution to the error when using the new version of conda</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Changelog"><span class="toc-number">1.1.</span> <span class="toc-text">Changelog</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#date-2020-04-03"><span class="toc-number">1.1.1.</span> <span class="toc-text">date: 2020-04-03</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-引言"><span class="toc-number">1.2.</span> <span class="toc-text">1. 引言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-问题复现"><span class="toc-number">1.3.</span> <span class="toc-text">2. 问题复现</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-解决办法"><span class="toc-number">1.4.</span> <span class="toc-text">3. 解决办法</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#3-1-将-conda-降级"><span class="toc-number">1.4.1.</span> <span class="toc-text">3.1 将 conda 降级</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-2-使用-pip"><span class="toc-number">1.4.2.</span> <span class="toc-text">3.2 使用 pip</span></a></li></ol></li></ol></li></ol>
+    </div>
+  </span>
+</div>
+
+    
+    <div class="content index py4">
+        
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle" itemprop="name headline">
+        最新版 conda 使用报错的解决办法
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span itemprop="name">Qianying's Balcony</span>
+      </span>
+      
+    <div class="postdate">
+      
+        <time datetime="2020-02-29T10:54:37.000Z" itemprop="datePublished">2020-02-29</time>
+        
+      
+    </div>
+
+
+      
+    <div class="article-category">
+        <i class="fas fa-archive"></i>
+        <a class="category-link" href="/categories/Errors-Solutions/">Errors&Solutions</a> › <a class="category-link" href="/categories/Errors-Solutions/conda/">conda</a>
+    </div>
+
+
+      
+    <div class="article-tag">
+        <i class="fas fa-tag"></i>
+        <a class="tag-link" href="/tags/anaconda/" rel="tag">anaconda</a>, <a class="tag-link" href="/tags/conda/" rel="tag">conda</a>
+    </div>
+
+
+    </div>
+  </header>
+  
+
+  <div class="content" itemprop="articleBody">
+    <h1 id="The-solution-to-the-error-when-using-the-new-version-of-conda"><a href="#The-solution-to-the-error-when-using-the-new-version-of-conda" class="headerlink" title="The solution to the error when using the new version of conda"></a>The solution to the error when using the new version of conda</h1><h2 id="Changelog"><a href="#Changelog" class="headerlink" title="Changelog"></a>Changelog</h2><h3 id="date-2020-04-03"><a href="#date-2020-04-03" class="headerlink" title="date: 2020-04-03"></a>date: 2020-04-03</h3><p><strong>Changed</strong></p>
+<ul>
+<li>change categories</li>
+</ul>
+<h2 id="1-引言"><a href="#1-引言" class="headerlink" title="1. 引言"></a>1. 引言</h2><p>最近在更新 conda 后, 使用 <code>conda install</code>安装包时, 会报 <code>Solving environment: failed with initial frozen solve. Retrying with flexible solve.</code> 的错误. </p>
+<p><img src="image-20200229191612036.png" alt="image-20200229191612036"></p>
+<p>最后在 GitHub 发现了解决办法<a href="https://github.com/conda/conda/issues/9367" target="_blank" rel="noopener">1</a>,</p>
+<h2 id="2-问题复现"><a href="#2-问题复现" class="headerlink" title="2. 问题复现"></a>2. 问题复现</h2><p>这个错误在 conda 4.7.12 和 最新的 conda 4.8.2 中均有出现。( Windows )</p>
+<p>使用 <code>conda install</code>安装其他包时, 将会出现上述问题。然而在创建一个环境时可以正常安装（例如：<code>conda create -n tensorflow_env tensorflow</code>）。</p>
+<h2 id="3-解决办法"><a href="#3-解决办法" class="headerlink" title="3. 解决办法"></a>3. 解决办法</h2><p>目前解决方案有两个，将 conda 降级、或使用 pip。</p>
+<h3 id="3-1-将-conda-降级"><a href="#3-1-将-conda-降级" class="headerlink" title="3.1 将 conda 降级"></a>3.1 将 conda 降级</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 设置 conda 试允许降级</span></span><br><span class="line">conda config --<span class="built_in">set</span> allow_conda_downgrades <span class="literal">true</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 降级 conda 为 4.6 版</span></span><br><span class="line">conda install conda=4.6</span><br><span class="line">( 或 conda install -n root conda=4.6)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 不允许 conda 自动升级</span></span><br><span class="line">conda config --<span class="built_in">set</span> auto_update_conda <span class="literal">false</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="3-2-使用-pip"><a href="#3-2-使用-pip" class="headerlink" title="3.2 使用 pip"></a>3.2 使用 pip</h3><p>由于 pip 和 conda 不兼容，建议在单独的环境下使用 pip。不要与 conda 混用。</p>
+<hr>
+<p>GitHub 有人反映降级 conda 并不能解决问题 :)</p>
+<p>建议跟踪此 issue <a href="https://github.com/conda/conda/issues/9367" target="_blank" rel="noopener">https://github.com/conda/conda/issues/9367</a></p>
+
+  </div>
+</article>
+
+
+
+        
+          <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/">首页</a></li>
+         
+          <li><a href="/about/">关于</a></li>
+         
+          <li><a href="/archives/">归档</a></li>
+         
+          <li><a href="/categories/">分类</a></li>
+         
+          <li><a href="https://github.com/probberechts/hexo-theme-cactus" target="_blank" rel="noopener">项目</a></li>
+         
+          <li><a href="/atom.xml">RSS</a></li>
+        
+      </ul>
+    </div>
+
+    <div id="toc-footer" style="display: none">
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#The-solution-to-the-error-when-using-the-new-version-of-conda"><span class="toc-number">1.</span> <span class="toc-text">The solution to the error when using the new version of conda</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Changelog"><span class="toc-number">1.1.</span> <span class="toc-text">Changelog</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#date-2020-04-03"><span class="toc-number">1.1.1.</span> <span class="toc-text">date: 2020-04-03</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-引言"><span class="toc-number">1.2.</span> <span class="toc-text">1. 引言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-问题复现"><span class="toc-number">1.3.</span> <span class="toc-text">2. 问题复现</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-解决办法"><span class="toc-number">1.4.</span> <span class="toc-text">3. 解决办法</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#3-1-将-conda-降级"><span class="toc-number">1.4.1.</span> <span class="toc-text">3.1 将 conda 降级</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-2-使用-pip"><span class="toc-number">1.4.2.</span> <span class="toc-text">3.2 使用 pip</span></a></li></ol></li></ol></li></ol>
+    </div>
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=https://suiahae.me/new-conda-using-error/" target="_blank" rel="noopener"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=https://suiahae.me/new-conda-using-error/&text=最新版 conda 使用报错的解决办法" target="_blank" rel="noopener"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=https://suiahae.me/new-conda-using-error/&title=最新版 conda 使用报错的解决办法" target="_blank" rel="noopener"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=https://suiahae.me/new-conda-using-error/&is_video=false&description=最新版 conda 使用报错的解决办法" target="_blank" rel="noopener"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=最新版 conda 使用报错的解决办法&body=Check out this article: https://suiahae.me/new-conda-using-error/"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=https://suiahae.me/new-conda-using-error/&title=最新版 conda 使用报错的解决办法" target="_blank" rel="noopener"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=https://suiahae.me/new-conda-using-error/&title=最新版 conda 使用报错的解决办法" target="_blank" rel="noopener"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=https://suiahae.me/new-conda-using-error/&title=最新版 conda 使用报错的解决办法" target="_blank" rel="noopener"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=https://suiahae.me/new-conda-using-error/&title=最新版 conda 使用报错的解决办法" target="_blank" rel="noopener"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=https://suiahae.me/new-conda-using-error/&name=最新版 conda 使用报错的解决办法&description=" target="_blank" rel="noopener"><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fas fa-bars fa-lg" aria-hidden="true"></i> 菜单</a>
+        <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fas fa-list fa-lg" aria-hidden="true"></i> 目录</a>
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fas fa-share-alt fa-lg" aria-hidden="true"></i> 分享</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up fa-lg" aria-hidden="true"></i> 返回顶部</a>
+    </div>
+
+  </div>
+</div>
+
+        
+        <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy; 2021 Qianying
+
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+         
+          <li><a href="/">首页</a></li>
+         
+          <li><a href="/about/">关于</a></li>
+         
+          <li><a href="/archives/">归档</a></li>
+         
+          <li><a href="/categories/">分类</a></li>
+         
+          <li><a href="https://github.com/probberechts/hexo-theme-cactus" target="_blank" rel="noopener">项目</a></li>
+         
+          <li><a href="/atom.xml">RSS</a></li>
+        
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+    </div>
+    <!-- styles -->
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+
+<link rel="stylesheet" href="/lib/justified-gallery/css/justifiedGallery.min.css">
+
+
+    <!-- jquery -->
+
+<script src="/lib/jquery/jquery.min.js"></script>
+
+
+<script src="/lib/justified-gallery/js/jquery.justifiedGallery.min.js"></script>
+
+<!-- clipboard -->
+
+  
+<script src="/lib/clipboard/clipboard.min.js"></script>
+
+  <script type="text/javascript">
+  $(function() {
+    // copy-btn HTML
+    var btn = "<span class=\"btn-copy tooltipped tooltipped-sw\" aria-label=\"复制到粘贴板!\">";
+    btn += '<i class="far fa-clone"></i>';
+    btn += '</span>'; 
+    // mount it!
+    $(".highlight .code pre").before(btn);
+    var clip = new ClipboardJS('.btn-copy', {
+      target: function(trigger) {
+        return trigger.nextElementSibling;
+      }
+    });
+    clip.on('success', function(e) {
+      e.trigger.setAttribute('aria-label', "复制成功!");
+      e.clearSelection();
+    })
+  })
+  </script>
+
+
+<script src="/js/main.js"></script>
+
+<!-- search -->
+
+<!-- Google Analytics -->
+
+    <script type="text/javascript">
+        (function(i,s,o,g,r,a,m) {i['GoogleAnalyticsObject']=r;i[r]=i[r]||function() {
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+        ga('create', 'UA-154856954-1', 'auto');
+        ga('send', 'pageview');
+    </script>
+
+<!-- Baidu Analytics -->
+
+<!-- Disqus Comments -->
+
+
+</body>
+</html>

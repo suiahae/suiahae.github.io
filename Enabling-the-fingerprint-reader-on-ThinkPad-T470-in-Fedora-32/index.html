@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang=zh>
+<head>
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="google-site-verification" content="lvyAlGlLiE0qiJrzn6oA_45GOBvNImfUeIAZ35vjf-4" />
+    <meta name="description" content="Enabling the fingerprint reader on ThinkPad T470 in Fedora 32The Thinkpad T470 comes equipped with a fingerprint scanner to allow easier authorization.  Unfortunately, the drivers are still under prot">
+<meta property="og:type" content="article">
+<meta property="og:title" content="为 ThinkPad T470 启用 Fedora 32 指纹认证">
+<meta property="og:url" content="https://suiahae.me/Enabling-the-fingerprint-reader-on-ThinkPad-T470-in-Fedora-32/index.html">
+<meta property="og:site_name" content="Qianying&#39;s Balcony">
+<meta property="og:description" content="Enabling the fingerprint reader on ThinkPad T470 in Fedora 32The Thinkpad T470 comes equipped with a fingerprint scanner to allow easier authorization.  Unfortunately, the drivers are still under prot">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2020-06-11T07:31:42.000Z">
+<meta property="article:modified_time" content="2020-07-17T14:49:56.835Z">
+<meta property="article:author" content="Qianying">
+<meta property="article:tag" content="Fedora">
+<meta name="twitter:card" content="summary">
+    
+    
+        
+          
+              <link rel="shortcut icon" href="/images/favicon.ico">
+          
+        
+        
+          
+            <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+          
+        
+        
+          
+            <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+          
+        
+    
+    <!-- title -->
+    <title>为 ThinkPad T470 启用 Fedora 32 指纹认证</title>
+    <!-- styles -->
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    <!-- persian styles -->
+    
+      
+<link rel="stylesheet" href="/css/rtl.css">
+
+    
+    <!-- rss -->
+    
+    
+<meta name="generator" content="Hexo 4.2.1"><link rel="alternate" href="/atom.xml" title="Qianying's Balcony" type="application/atom+xml">
+</head>
+
+<body class="max-width mx-auto px3 ltr">
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fas fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+         
+          <li><a href="/">首页</a></li>
+         
+          <li><a href="/about/">关于</a></li>
+         
+          <li><a href="/archives/">归档</a></li>
+         
+          <li><a href="/categories/">分类</a></li>
+         
+          <li><a href="https://github.com/probberechts/hexo-theme-cactus" target="_blank" rel="noopener">项目</a></li>
+         
+          <li><a href="/atom.xml">RSS</a></li>
+        
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        <li><a class="icon" href="/How-to-install-a-web-application-on-FireFox/"><i class="fas fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i></a></li>
+        
+        
+        <li><a class="icon" href="/Python-Cross-system-Compatibility/"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        
+        <li><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" href="#"><i class="fas fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">上一篇</span>
+      <span id="i-next" class="info" style="display:none;">下一篇</span>
+      <span id="i-top" class="info" style="display:none;">返回顶部</span>
+      <span id="i-share" class="info" style="display:none;">分享文章</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=https://suiahae.me/Enabling-the-fingerprint-reader-on-ThinkPad-T470-in-Fedora-32/" target="_blank" rel="noopener"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=https://suiahae.me/Enabling-the-fingerprint-reader-on-ThinkPad-T470-in-Fedora-32/&text=为 ThinkPad T470 启用 Fedora 32 指纹认证" target="_blank" rel="noopener"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=https://suiahae.me/Enabling-the-fingerprint-reader-on-ThinkPad-T470-in-Fedora-32/&title=为 ThinkPad T470 启用 Fedora 32 指纹认证" target="_blank" rel="noopener"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=https://suiahae.me/Enabling-the-fingerprint-reader-on-ThinkPad-T470-in-Fedora-32/&is_video=false&description=为 ThinkPad T470 启用 Fedora 32 指纹认证" target="_blank" rel="noopener"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=为 ThinkPad T470 启用 Fedora 32 指纹认证&body=Check out this article: https://suiahae.me/Enabling-the-fingerprint-reader-on-ThinkPad-T470-in-Fedora-32/"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=https://suiahae.me/Enabling-the-fingerprint-reader-on-ThinkPad-T470-in-Fedora-32/&title=为 ThinkPad T470 启用 Fedora 32 指纹认证" target="_blank" rel="noopener"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=https://suiahae.me/Enabling-the-fingerprint-reader-on-ThinkPad-T470-in-Fedora-32/&title=为 ThinkPad T470 启用 Fedora 32 指纹认证" target="_blank" rel="noopener"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=https://suiahae.me/Enabling-the-fingerprint-reader-on-ThinkPad-T470-in-Fedora-32/&title=为 ThinkPad T470 启用 Fedora 32 指纹认证" target="_blank" rel="noopener"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=https://suiahae.me/Enabling-the-fingerprint-reader-on-ThinkPad-T470-in-Fedora-32/&title=为 ThinkPad T470 启用 Fedora 32 指纹认证" target="_blank" rel="noopener"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=https://suiahae.me/Enabling-the-fingerprint-reader-on-ThinkPad-T470-in-Fedora-32/&name=为 ThinkPad T470 启用 Fedora 32 指纹认证&description=" target="_blank" rel="noopener"><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    <div id="toc">
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Enabling-the-fingerprint-reader-on-ThinkPad-T470-in-Fedora-32"><span class="toc-number">1.</span> <span class="toc-text">Enabling the fingerprint reader on ThinkPad T470 in Fedora 32</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-Installing-fprintd-in-Fedora"><span class="toc-number">1.1.</span> <span class="toc-text">1. Installing fprintd in Fedora</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-Configuring-fprintd"><span class="toc-number">1.2.</span> <span class="toc-text">2. Configuring fprintd</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-Login-configuration"><span class="toc-number">1.3.</span> <span class="toc-text">3. Login configuration</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#0-Installing-Windows-in-VirtualBox"><span class="toc-number">1.4.</span> <span class="toc-text">0. Installing Windows in VirtualBox</span></a></li></ol></li></ol>
+    </div>
+  </span>
+</div>
+
+    
+    <div class="content index py4">
+        
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle" itemprop="name headline">
+        为 ThinkPad T470 启用 Fedora 32 指纹认证
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span itemprop="name">Qianying's Balcony</span>
+      </span>
+      
+    <div class="postdate">
+      
+        <time datetime="2020-06-11T07:31:42.000Z" itemprop="datePublished">2020-06-11</time>
+        
+      
+    </div>
+
+
+      
+    <div class="article-category">
+        <i class="fas fa-archive"></i>
+        <a class="category-link" href="/categories/Handbooks/">Handbooks</a> › <a class="category-link" href="/categories/Handbooks/Linux/">Linux</a>
+    </div>
+
+
+      
+    <div class="article-tag">
+        <i class="fas fa-tag"></i>
+        <a class="tag-link" href="/tags/Fedora/" rel="tag">Fedora</a>
+    </div>
+
+
+    </div>
+  </header>
+  
+
+  <div class="content" itemprop="articleBody">
+    <h1 id="Enabling-the-fingerprint-reader-on-ThinkPad-T470-in-Fedora-32"><a href="#Enabling-the-fingerprint-reader-on-ThinkPad-T470-in-Fedora-32" class="headerlink" title="Enabling the fingerprint reader on ThinkPad T470 in Fedora 32"></a>Enabling the fingerprint reader on ThinkPad T470 in Fedora 32</h1><p>The Thinkpad T470 comes equipped with a fingerprint scanner to allow easier authorization.  Unfortunately, the drivers are still under prototype development but are working in Fedora.  In order to use the fingerprint scanner, it needs to be initialized with data which can only currently be done from Windows(<strong>This section is at the end of the article</strong>).</p>
+<h2 id="1-Installing-fprintd-in-Fedora"><a href="#1-Installing-fprintd-in-Fedora" class="headerlink" title="1. Installing fprintd in Fedora"></a>1. Installing fprintd in Fedora</h2><p>Fedora comes with fingerprint authentication however it does not recognize the fingerprint scanner that comes with the T470.  Start by downloading the base packages and re-compile the drivers after.</p>
+<p>But the defaule packages version is too new to use.  Fedora updated fprintd to the latest version, which requires libfprint-2.so, which is not provided by this modified libfprint. We’ll have to stick with an older version of fprintd.</p>
+<p>Remove latest version.</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo dnf -y remove fprintd fprintd-pam</span><br></pre></td></tr></table></figure>
+
+<p>Download and install old version from archive depositary(<a href="https://koji.fedoraproject.org/koji/buildinfo?buildID=1355724" target="_blank" rel="noopener">fprint</a>, <a href="https://koji.fedoraproject.org/koji/buildinfo?buildID=1440636" target="_blank" rel="noopener">libfprint</a>).</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">fprint_t470=<span class="string">'https://kojipkgs.fedoraproject.org//packages/fprintd/0.9.0/1.fc32/x86_64/fprintd-0.9.0-1.fc32.x86_64.rpm'</span>;</span><br><span class="line">fprint_pam_t470=<span class="string">'https://kojipkgs.fedoraproject.org//packages/fprintd/0.9.0/1.fc32/x86_64/fprintd-pam-0.9.0-1.fc32.x86_64.rpm'</span>;</span><br><span class="line">libfprint_t470=<span class="string">'https://kojipkgs.fedoraproject.org//packages/libfprint/1.0/2.fc32/x86_64/libfprint-1.0-2.fc32.x86_64.rpm'</span>;</span><br><span class="line"></span><br><span class="line">wget <span class="variable">$fprint_t470</span> <span class="variable">$fprint_pam_t470</span> <span class="variable">$libfprint_t470</span>;</span><br><span class="line"></span><br><span class="line">sudo dnf install ./fprintd-0.9.0-1.fc32.x86_64.rpm ./pam-0.9.0-1.fc32.x86_64.rpm ./libfprint-1.0-2.fc32.x86_64.rpm;</span><br></pre></td></tr></table></figure>
+
+<p>Add <code>exclude=fprint* libfprint</code> to the last line of <code>/etc/dnf/dnf.conf</code> to disable the update.</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo <span class="built_in">echo</span> <span class="string">"exclude=fprintd* libfprint"</span> &gt;&gt; /etc/dnf/dnf.conf</span><br></pre></td></tr></table></figure>
+
+<p>Next, clone the modified libfprint library from <a href="https://github.com/hrenod/libfprint" target="_blank" rel="noopener">https://github.com/hrenod/libfprint</a></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git <span class="built_in">clone</span> https://github.com/hrenod/libfprint.git</span><br><span class="line"><span class="built_in">cd</span> ~/libfprint</span><br></pre></td></tr></table></figure>
+
+<p>Most documentation for this library and its parent repositories are applicable to Debian based systems. Dependency naming conventions on RHEL systems differ slightly but the packages should be roughly the same.  Install the dependencies using yum package manager (zsh users may need to quote “libusb*-devel” if the extended globbing option is enabled).</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo dnf -y install gcc-c++ gtk3-devel <span class="string">"libusb*-devel"</span> libXv-devel libtool libgcrypt-devel glib2-devel nss-devel libusb-devel openssl-devel libpng-devel gnutls-devel</span><br></pre></td></tr></table></figure>
+
+<p>Once dependencies are installed, compile the updated headers.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">.&#x2F;autogen.sh</span><br><span class="line">make</span><br><span class="line">sudo make install</span><br></pre></td></tr></table></figure>
+
+<p>Test that the new drivers are working.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cd examples</span><br><span class="line">sudo .&#x2F;enroll</span><br></pre></td></tr></table></figure>
+
+<p>Agree to the options when prompted, nothing will be overwritten. Then, verify your print.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo .&#x2F;verify</span><br></pre></td></tr></table></figure>
+
+<p>If the fingerprint is a MATCH, move on to the setting up fingerprint authorization.</p>
+<h2 id="2-Configuring-fprintd"><a href="#2-Configuring-fprintd" class="headerlink" title="2. Configuring fprintd"></a>2. Configuring fprintd</h2><p>In order for the fingerprint scanner to be available to the user, you need to update the device permissions.  Since these permissions are set by the kernel at boot, register a new service that will update them before logging.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo vim &#x2F;etc&#x2F;systemd&#x2F;system&#x2F;set-permissions.service</span><br></pre></td></tr></table></figure>
+
+<p>Copy the following contents:</p>
+<p><code>/etc/systemd/system/set-permissions.service</code></p>
+<figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="section">[Unit]</span></span><br><span class="line"><span class="attr">Description</span>=Set fingerprint reader as readable to everybody</span><br><span class="line"><span class="attr">Before</span>=set-permissions.service</span><br><span class="line"></span><br><span class="line"><span class="section">[Service]</span></span><br><span class="line"><span class="attr">Type</span>=<span class="literal">on</span>eshot</span><br><span class="line"><span class="attr">User</span>=root</span><br><span class="line"><span class="attr">ExecStart</span>=/bin/bash -c <span class="string">"/bin/chmod a+r /sys/class/dmi/id/product_serial"</span></span><br><span class="line"></span><br><span class="line"><span class="section">[Install]</span></span><br><span class="line"><span class="attr">WantedBy</span>=multi-user.target</span><br></pre></td></tr></table></figure>
+
+<p>Register the service at boot, start the service and verify that it worked.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo systemctl enable set-permissions.service</span><br><span class="line">sudo systemctl start set-permissions.service</span><br><span class="line">sudo systemctl status set-permissions.service</span><br></pre></td></tr></table></figure>
+
+<p>Link the path to the newly compiled driver to ldconfig and reload the cache.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo su</span><br><span class="line">echo &quot;&#x2F;usr&#x2F;local&#x2F;lib&quot; &gt; &#x2F;etc&#x2F;ld.so.conf.d&#x2F;libfprint.conf</span><br><span class="line">ldconfig</span><br></pre></td></tr></table></figure>
+
+<p>While you are still root, verify that the drivers have been loaded and accessible to the system.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">fprintd-enroll --finger&#x3D;right-index-finger</span><br></pre></td></tr></table></figure>
+
+<p>If successful, exit to the user shell and re-enroll as your user.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">exit</span><br><span class="line">fprintd-enroll --finger&#x3D;right-index-finger</span><br></pre></td></tr></table></figure>
+
+<h2 id="3-Login-configuration"><a href="#3-Login-configuration" class="headerlink" title="3. Login configuration"></a><a href="https://wiki.archlinux.org/index.php/Fprint#Configuration" target="_blank" rel="noopener">3. Login configuration</a></h2><p>Each component of authorization has its own set of rules defined in <em>/etc/pam.d/</em> and can be individually configured to use the fingerprint scanner.</p>
+<p>Add the following line to the top of any file (under the shebang) where you would like fingerprint authorization.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">auth       sufficient   pam_fprintd.so</span><br></pre></td></tr></table></figure>
+
+<p>Some example files include:</p>
+<table>
+<thead>
+<tr>
+<th>File</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>/etc/pam.d/gdm-password</td>
+<td>Authorize on login screen</td>
+</tr>
+<tr>
+<td>/etc/pam.d/polkit-1</td>
+<td>GNOME polkit authentication</td>
+</tr>
+<tr>
+<td>/etc/pam.d/sudo</td>
+<td>Authorize when running single commands as root</td>
+</tr>
+<tr>
+<td>/etc/pam.d/su</td>
+<td>Authorize when trying to escalate to root user</td>
+</tr>
+</tbody></table>
+<p>Adding <code>pam_fprintd.so</code> as <em>sufficient</em> to any configuration file in <code>/etc/pam.d/</code> when a fingerprint signature is present will only prompt for fingerprint authentication, preventing the use of a password. In order to use either a password or a fingerprint, add the following line to the top of any files required:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;etc&#x2F;pam.d&#x2F;sudo</span><br><span class="line">auth		sufficient  	pam_unix.so try_first_pass likeauth nullok</span><br><span class="line">auth		sufficient  	pam_fprintd.so</span><br><span class="line">...</span><br></pre></td></tr></table></figure>
+
+<p>This will prompt for a password, if the field is left blank and enter is pressed it will proceed to fingerprint authentication.(don’t work on <code>/etc/pam.d/polkit-1</code>)</p>
+<h2 id="0-Installing-Windows-in-VirtualBox"><a href="#0-Installing-Windows-in-VirtualBox" class="headerlink" title="0. Installing Windows in VirtualBox"></a>0. Installing Windows in VirtualBox</h2><p>First make sure your system is up to date.</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo dnf update</span><br></pre></td></tr></table></figure>
+
+<p>Restart the machine in order to proceed.  In order for VirtualBox to work, some settings need to be tweaked in the BIOS.  Restarting also ensures that you’re running the latest kernel after updating.</p>
+<p>Press Enter at the boot screen followed by F1 to enter the BIOS settings.  These changes can be reverted after successfully writing your fingerprint data.  In the BIOS settings screen:</p>
+<ul>
+<li>Disable secure boot</li>
+<li>Enable hardware virtualization</li>
+</ul>
+<p>Before proceeding with installation, download a copy of Windows 10 (64-bit) from:</p>
+<p><a href="https://www.microsoft.com/en-us/software-download/windows10" target="_blank" rel="noopener">https://www.microsoft.com/en-us/software-download/windows10</a></p>
+<p>Then, as root, install VirtualBox.</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">sudo su</span><br><span class="line"><span class="built_in">cd</span> /etc/yum.repos.d</span><br><span class="line">wget http://download.virtualbox.org/virtualbox/rpm/fedora/virtualbox.repo</span><br><span class="line">dnf install VirtualBox-6.0</span><br></pre></td></tr></table></figure>
+
+<p>Rebuild the kernel modules and return to your user’s shell</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">/usr/lib/virtualbox/vboxdrv.sh setup</span><br><span class="line"><span class="built_in">exit</span></span><br></pre></td></tr></table></figure>
+
+<p>Add your user to the VirtualBox group and verify</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo usermod -a -G vboxusers <span class="variable">$USER</span></span><br></pre></td></tr></table></figure>
+
+<p>Now create a directory where you’ll store your VirtualBox images and iso files.</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mkdir -p ~/VirtualBox/iso</span><br></pre></td></tr></table></figure>
+
+<p>From the System tab in the Applications menu, launch Oracle VM VirtualBox and click “New” to create a new virtual machine.  Name the machine “Windows 10”, select the VirtualBox directory that you just created (not iso), and select <em>Windows 10 (64-bit)</em> as the version.</p>
+<p>Allocate 3072 MB of RAM and proceed to virtual hard disk setup.  The disk should be a VDI type disk with dynamically allocated space.  Give it an upper bounds of 32GB and create.</p>
+<p>In order for USB 2.0 and 3.0 devices to work, download and install the <em>VirtualBox 6.0.14 Oracle VM VirtualBox Extension Pack</em> from here:</p>
+<p><a href="https://download.virtualbox.org/virtualbox/6.0.14/Oracle_VM_VirtualBox_Extension_Pack-6.0.14.vbox-extpack" target="_blank" rel="noopener">https://download.virtualbox.org/virtualbox/6.0.14/Oracle_VM_VirtualBox_Extension_Pack-6.0.14.vbox-extpack</a>:</p>
+<p>Enable USB 2.0 from the virtual machine’s USB settings. </p>
+<p>* You may need to reboot your host machine (laptop) in order for these changes to take effect).</p>
+<p>Before you boot, you need to re-configure your disks.  From the machine’s Settings, in the storage pane:</p>
+<ul>
+<li>Update the <em>Windows 10.vdi</em> as a solid-state drive</li>
+<li>Delete the default optical drive</li>
+<li>Create a new optical drive and select the downloaded Window .iso.</li>
+</ul>
+<p>Run through the Windows setup process and download the Synaptics MOC driver from Lenovo’s support site here: </p>
+<p><a href="https://support.lenovo.com/us/en/downloads/ds120295" target="_blank" rel="noopener">https://support.lenovo.com/us/en/downloads/ds120295</a></p>
+<p>Attach the fingerprint scanner to Windows from the USB settings in the VitrtualBox footer (windowed mode). You should now be able to register your fingerprint from &gt; Settings &gt; Accounts &gt; Sign-In Options &gt; Windows Hello Fingerprint</p>
+<hr>
+<p><strong>[modify from] <a href="https://brod.co/articles/enabling-the-fingerprint-reader-on-a-thinkpad-t470-in-fedora-31" target="_blank" rel="noopener">https://brod.co/articles/enabling-the-fingerprint-reader-on-a-thinkpad-t470-in-fedora-31</a></strong></p>
+
+  </div>
+</article>
+
+
+
+        
+          <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/">首页</a></li>
+         
+          <li><a href="/about/">关于</a></li>
+         
+          <li><a href="/archives/">归档</a></li>
+         
+          <li><a href="/categories/">分类</a></li>
+         
+          <li><a href="https://github.com/probberechts/hexo-theme-cactus" target="_blank" rel="noopener">项目</a></li>
+         
+          <li><a href="/atom.xml">RSS</a></li>
+        
+      </ul>
+    </div>
+
+    <div id="toc-footer" style="display: none">
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Enabling-the-fingerprint-reader-on-ThinkPad-T470-in-Fedora-32"><span class="toc-number">1.</span> <span class="toc-text">Enabling the fingerprint reader on ThinkPad T470 in Fedora 32</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-Installing-fprintd-in-Fedora"><span class="toc-number">1.1.</span> <span class="toc-text">1. Installing fprintd in Fedora</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-Configuring-fprintd"><span class="toc-number">1.2.</span> <span class="toc-text">2. Configuring fprintd</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-Login-configuration"><span class="toc-number">1.3.</span> <span class="toc-text">3. Login configuration</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#0-Installing-Windows-in-VirtualBox"><span class="toc-number">1.4.</span> <span class="toc-text">0. Installing Windows in VirtualBox</span></a></li></ol></li></ol>
+    </div>
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=https://suiahae.me/Enabling-the-fingerprint-reader-on-ThinkPad-T470-in-Fedora-32/" target="_blank" rel="noopener"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=https://suiahae.me/Enabling-the-fingerprint-reader-on-ThinkPad-T470-in-Fedora-32/&text=为 ThinkPad T470 启用 Fedora 32 指纹认证" target="_blank" rel="noopener"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=https://suiahae.me/Enabling-the-fingerprint-reader-on-ThinkPad-T470-in-Fedora-32/&title=为 ThinkPad T470 启用 Fedora 32 指纹认证" target="_blank" rel="noopener"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=https://suiahae.me/Enabling-the-fingerprint-reader-on-ThinkPad-T470-in-Fedora-32/&is_video=false&description=为 ThinkPad T470 启用 Fedora 32 指纹认证" target="_blank" rel="noopener"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=为 ThinkPad T470 启用 Fedora 32 指纹认证&body=Check out this article: https://suiahae.me/Enabling-the-fingerprint-reader-on-ThinkPad-T470-in-Fedora-32/"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=https://suiahae.me/Enabling-the-fingerprint-reader-on-ThinkPad-T470-in-Fedora-32/&title=为 ThinkPad T470 启用 Fedora 32 指纹认证" target="_blank" rel="noopener"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=https://suiahae.me/Enabling-the-fingerprint-reader-on-ThinkPad-T470-in-Fedora-32/&title=为 ThinkPad T470 启用 Fedora 32 指纹认证" target="_blank" rel="noopener"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=https://suiahae.me/Enabling-the-fingerprint-reader-on-ThinkPad-T470-in-Fedora-32/&title=为 ThinkPad T470 启用 Fedora 32 指纹认证" target="_blank" rel="noopener"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=https://suiahae.me/Enabling-the-fingerprint-reader-on-ThinkPad-T470-in-Fedora-32/&title=为 ThinkPad T470 启用 Fedora 32 指纹认证" target="_blank" rel="noopener"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=https://suiahae.me/Enabling-the-fingerprint-reader-on-ThinkPad-T470-in-Fedora-32/&name=为 ThinkPad T470 启用 Fedora 32 指纹认证&description=" target="_blank" rel="noopener"><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fas fa-bars fa-lg" aria-hidden="true"></i> 菜单</a>
+        <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fas fa-list fa-lg" aria-hidden="true"></i> 目录</a>
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fas fa-share-alt fa-lg" aria-hidden="true"></i> 分享</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up fa-lg" aria-hidden="true"></i> 返回顶部</a>
+    </div>
+
+  </div>
+</div>
+
+        
+        <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy; 2021 Qianying
+
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+         
+          <li><a href="/">首页</a></li>
+         
+          <li><a href="/about/">关于</a></li>
+         
+          <li><a href="/archives/">归档</a></li>
+         
+          <li><a href="/categories/">分类</a></li>
+         
+          <li><a href="https://github.com/probberechts/hexo-theme-cactus" target="_blank" rel="noopener">项目</a></li>
+         
+          <li><a href="/atom.xml">RSS</a></li>
+        
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+    </div>
+    <!-- styles -->
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+
+<link rel="stylesheet" href="/lib/justified-gallery/css/justifiedGallery.min.css">
+
+
+    <!-- jquery -->
+
+<script src="/lib/jquery/jquery.min.js"></script>
+
+
+<script src="/lib/justified-gallery/js/jquery.justifiedGallery.min.js"></script>
+
+<!-- clipboard -->
+
+  
+<script src="/lib/clipboard/clipboard.min.js"></script>
+
+  <script type="text/javascript">
+  $(function() {
+    // copy-btn HTML
+    var btn = "<span class=\"btn-copy tooltipped tooltipped-sw\" aria-label=\"复制到粘贴板!\">";
+    btn += '<i class="far fa-clone"></i>';
+    btn += '</span>'; 
+    // mount it!
+    $(".highlight .code pre").before(btn);
+    var clip = new ClipboardJS('.btn-copy', {
+      target: function(trigger) {
+        return trigger.nextElementSibling;
+      }
+    });
+    clip.on('success', function(e) {
+      e.trigger.setAttribute('aria-label', "复制成功!");
+      e.clearSelection();
+    })
+  })
+  </script>
+
+
+<script src="/js/main.js"></script>
+
+<!-- search -->
+
+<!-- Google Analytics -->
+
+    <script type="text/javascript">
+        (function(i,s,o,g,r,a,m) {i['GoogleAnalyticsObject']=r;i[r]=i[r]||function() {
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+        ga('create', 'UA-154856954-1', 'auto');
+        ga('send', 'pageview');
+    </script>
+
+<!-- Baidu Analytics -->
+
+<!-- Disqus Comments -->
+
+
+</body>
+</html>

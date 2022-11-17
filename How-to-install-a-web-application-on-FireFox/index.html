@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang=zh>
+<head>
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="google-site-verification" content="lvyAlGlLiE0qiJrzn6oA_45GOBvNImfUeIAZ35vjf-4" />
+    <meta name="description" content="How to “install” a web application on FireFox  PWA的出现使我们能够把网页如同一个应用般安装在系统上。这缓解了Linux软件的匮乏，也方便了我们办公和日常使用。在PC端目前只有Chromium系浏览器有这完整的PWA支持，FireFox相应功能的开发还遥遥无期。现在我们可以通过”Single Site Browser“来达到类似的体验。 一. 启用F">
+<meta property="og:type" content="article">
+<meta property="og:title" content="如何在FireFox“安装”网页应用">
+<meta property="og:url" content="https://suiahae.me/How-to-install-a-web-application-on-FireFox/index.html">
+<meta property="og:site_name" content="Qianying&#39;s Balcony">
+<meta property="og:description" content="How to “install” a web application on FireFox  PWA的出现使我们能够把网页如同一个应用般安装在系统上。这缓解了Linux软件的匮乏，也方便了我们办公和日常使用。在PC端目前只有Chromium系浏览器有这完整的PWA支持，FireFox相应功能的开发还遥遥无期。现在我们可以通过”Single Site Browser“来达到类似的体验。 一. 启用F">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://suiahae.me/How-to-install-a-web-application-on-FireFox/firefoxandpwa.png">
+<meta property="article:published_time" content="2020-08-10T08:16:42.000Z">
+<meta property="article:modified_time" content="2020-08-10T08:36:53.134Z">
+<meta property="article:author" content="Qianying">
+<meta property="article:tag" content="FireFox">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://suiahae.me/How-to-install-a-web-application-on-FireFox/firefoxandpwa.png">
+    
+    
+        
+          
+              <link rel="shortcut icon" href="/images/favicon.ico">
+          
+        
+        
+          
+            <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+          
+        
+        
+          
+            <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+          
+        
+    
+    <!-- title -->
+    <title>如何在FireFox“安装”网页应用</title>
+    <!-- styles -->
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    <!-- persian styles -->
+    
+      
+<link rel="stylesheet" href="/css/rtl.css">
+
+    
+    <!-- rss -->
+    
+    
+<meta name="generator" content="Hexo 4.2.1"><link rel="alternate" href="/atom.xml" title="Qianying's Balcony" type="application/atom+xml">
+</head>
+
+<body class="max-width mx-auto px3 ltr">
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fas fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+         
+          <li><a href="/">首页</a></li>
+         
+          <li><a href="/about/">关于</a></li>
+         
+          <li><a href="/archives/">归档</a></li>
+         
+          <li><a href="/categories/">分类</a></li>
+         
+          <li><a href="https://github.com/probberechts/hexo-theme-cactus" target="_blank" rel="noopener">项目</a></li>
+         
+          <li><a href="/atom.xml">RSS</a></li>
+        
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        <li><a class="icon" href="/Reinforcement-learning-Distribution-function-of-the-optimal-solution-in-Epsilon-Greedy/"><i class="fas fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i></a></li>
+        
+        
+        <li><a class="icon" href="/Enabling-the-fingerprint-reader-on-ThinkPad-T470-in-Fedora-32/"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        
+        <li><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" href="#"><i class="fas fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">上一篇</span>
+      <span id="i-next" class="info" style="display:none;">下一篇</span>
+      <span id="i-top" class="info" style="display:none;">返回顶部</span>
+      <span id="i-share" class="info" style="display:none;">分享文章</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=https://suiahae.me/How-to-install-a-web-application-on-FireFox/" target="_blank" rel="noopener"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=https://suiahae.me/How-to-install-a-web-application-on-FireFox/&text=如何在FireFox“安装”网页应用" target="_blank" rel="noopener"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=https://suiahae.me/How-to-install-a-web-application-on-FireFox/&title=如何在FireFox“安装”网页应用" target="_blank" rel="noopener"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=https://suiahae.me/How-to-install-a-web-application-on-FireFox/&is_video=false&description=如何在FireFox“安装”网页应用" target="_blank" rel="noopener"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=如何在FireFox“安装”网页应用&body=Check out this article: https://suiahae.me/How-to-install-a-web-application-on-FireFox/"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=https://suiahae.me/How-to-install-a-web-application-on-FireFox/&title=如何在FireFox“安装”网页应用" target="_blank" rel="noopener"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=https://suiahae.me/How-to-install-a-web-application-on-FireFox/&title=如何在FireFox“安装”网页应用" target="_blank" rel="noopener"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=https://suiahae.me/How-to-install-a-web-application-on-FireFox/&title=如何在FireFox“安装”网页应用" target="_blank" rel="noopener"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=https://suiahae.me/How-to-install-a-web-application-on-FireFox/&title=如何在FireFox“安装”网页应用" target="_blank" rel="noopener"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=https://suiahae.me/How-to-install-a-web-application-on-FireFox/&name=如何在FireFox“安装”网页应用&description=" target="_blank" rel="noopener"><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    <div id="toc">
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#How-to-“install”-a-web-application-on-FireFox"><span class="toc-number">1.</span> <span class="toc-text">How to “install” a web application on FireFox</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#一-启用FireFox的“Single-Site-Browser”特性："><span class="toc-number">1.0.1.</span> <span class="toc-text">一. 启用FireFox的“Single Site Browser”特性：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#二-使用参数“–ssb”打开网址："><span class="toc-number">1.0.2.</span> <span class="toc-text">二. 使用参数“–ssb”打开网址：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#三-创建快捷方式："><span class="toc-number">1.0.3.</span> <span class="toc-text">三. 创建快捷方式：</span></a></li></ol></li></ol></li></ol>
+    </div>
+  </span>
+</div>
+
+    
+    <div class="content index py4">
+        
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle" itemprop="name headline">
+        如何在FireFox“安装”网页应用
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span itemprop="name">Qianying's Balcony</span>
+      </span>
+      
+    <div class="postdate">
+      
+        <time datetime="2020-08-10T08:16:42.000Z" itemprop="datePublished">2020-08-10</time>
+        
+      
+    </div>
+
+
+      
+    <div class="article-category">
+        <i class="fas fa-archive"></i>
+        <a class="category-link" href="/categories/Handbooks/">Handbooks</a> › <a class="category-link" href="/categories/Handbooks/Linux/">Linux</a>
+    </div>
+
+
+      
+    <div class="article-tag">
+        <i class="fas fa-tag"></i>
+        <a class="tag-link" href="/tags/FireFox/" rel="tag">FireFox</a>
+    </div>
+
+
+    </div>
+  </header>
+  
+
+  <div class="content" itemprop="articleBody">
+    <h1 id="How-to-“install”-a-web-application-on-FireFox"><a href="#How-to-“install”-a-web-application-on-FireFox" class="headerlink" title="How to “install” a web application on FireFox"></a>How to “install” a web application on FireFox</h1><img src="firefoxandpwa.png" alt="无标题" style="zoom: 50%;" />
+
+<p>PWA的出现使我们能够把网页如同一个应用般安装在系统上。这缓解了Linux软件的匮乏，也方便了我们办公和日常使用。在PC端目前只有Chromium系浏览器有这完整的PWA支持，FireFox相应功能的开发还遥遥无期。现在我们可以通过”Single Site Browser“来达到类似的体验。</p>
+<h3 id="一-启用FireFox的“Single-Site-Browser”特性："><a href="#一-启用FireFox的“Single-Site-Browser”特性：" class="headerlink" title="一. 启用FireFox的“Single Site Browser”特性："></a>一. 启用FireFox的“Single Site Browser”特性：</h3><ol>
+<li><p>在新选项卡中，在地址栏中输入 <code>about:config</code>，然后按Enter键。 单击接受风险的按钮。    </p>
+</li>
+<li><p>在页面的搜索框中输入”ssd“。</p>
+</li>
+<li><p>双击”browser.ssb.enabled”，将值从false改为true。</p>
+</li>
+<li><p>重启FireFox</p>
+</li>
+</ol>
+<h3 id="二-使用参数“–ssb”打开网址："><a href="#二-使用参数“–ssb”打开网址：" class="headerlink" title="二. 使用参数“–ssb”打开网址："></a>二. 使用参数“–ssb”打开网址：</h3><ul>
+<li><p>Linux：</p>
+<p><code>firefox -ssb https://www.google.com</code></p>
+</li>
+<li><p>WIndows：</p>
+<p><code>&quot;C:\Program Files\Mozilla Firefox\firefox.exe&quot; -ssb https://www.google.com</code></p>
+</li>
+</ul>
+<h3 id="三-创建快捷方式："><a href="#三-创建快捷方式：" class="headerlink" title="三. 创建快捷方式："></a>三. 创建快捷方式：</h3><ul>
+<li><p>Linux：</p>
+<p>添加gnome桌面图标，在.local/share/applications新建.desktop文件。</p>
+</li>
+<li><p>Windows：</p>
+<p>右键新建快捷方式并在路径内填入“二”中的命令。</p>
+</li>
+</ul>
+<p><em><a href="https://support.mozilla.org/zh-CN/questions/1292666" target="_blank" rel="noopener">https://support.mozilla.org/zh-CN/questions/1292666</a></em><br><em><a href="https://images.app.goo.gl/Max7LhsrzkM3eCHj8" target="_blank" rel="noopener">https://images.app.goo.gl/Max7LhsrzkM3eCHj8</a></em><br><em><a href="https://images.app.goo.gl/hbWM2WTEgsZK8uzT8" target="_blank" rel="noopener">https://images.app.goo.gl/hbWM2WTEgsZK8uzT8</a></em></p>
+
+  </div>
+</article>
+
+
+
+        
+          <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/">首页</a></li>
+         
+          <li><a href="/about/">关于</a></li>
+         
+          <li><a href="/archives/">归档</a></li>
+         
+          <li><a href="/categories/">分类</a></li>
+         
+          <li><a href="https://github.com/probberechts/hexo-theme-cactus" target="_blank" rel="noopener">项目</a></li>
+         
+          <li><a href="/atom.xml">RSS</a></li>
+        
+      </ul>
+    </div>
+
+    <div id="toc-footer" style="display: none">
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#How-to-“install”-a-web-application-on-FireFox"><span class="toc-number">1.</span> <span class="toc-text">How to “install” a web application on FireFox</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#一-启用FireFox的“Single-Site-Browser”特性："><span class="toc-number">1.0.1.</span> <span class="toc-text">一. 启用FireFox的“Single Site Browser”特性：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#二-使用参数“–ssb”打开网址："><span class="toc-number">1.0.2.</span> <span class="toc-text">二. 使用参数“–ssb”打开网址：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#三-创建快捷方式："><span class="toc-number">1.0.3.</span> <span class="toc-text">三. 创建快捷方式：</span></a></li></ol></li></ol></li></ol>
+    </div>
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=https://suiahae.me/How-to-install-a-web-application-on-FireFox/" target="_blank" rel="noopener"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=https://suiahae.me/How-to-install-a-web-application-on-FireFox/&text=如何在FireFox“安装”网页应用" target="_blank" rel="noopener"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=https://suiahae.me/How-to-install-a-web-application-on-FireFox/&title=如何在FireFox“安装”网页应用" target="_blank" rel="noopener"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=https://suiahae.me/How-to-install-a-web-application-on-FireFox/&is_video=false&description=如何在FireFox“安装”网页应用" target="_blank" rel="noopener"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=如何在FireFox“安装”网页应用&body=Check out this article: https://suiahae.me/How-to-install-a-web-application-on-FireFox/"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=https://suiahae.me/How-to-install-a-web-application-on-FireFox/&title=如何在FireFox“安装”网页应用" target="_blank" rel="noopener"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=https://suiahae.me/How-to-install-a-web-application-on-FireFox/&title=如何在FireFox“安装”网页应用" target="_blank" rel="noopener"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=https://suiahae.me/How-to-install-a-web-application-on-FireFox/&title=如何在FireFox“安装”网页应用" target="_blank" rel="noopener"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=https://suiahae.me/How-to-install-a-web-application-on-FireFox/&title=如何在FireFox“安装”网页应用" target="_blank" rel="noopener"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=https://suiahae.me/How-to-install-a-web-application-on-FireFox/&name=如何在FireFox“安装”网页应用&description=" target="_blank" rel="noopener"><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fas fa-bars fa-lg" aria-hidden="true"></i> 菜单</a>
+        <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fas fa-list fa-lg" aria-hidden="true"></i> 目录</a>
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fas fa-share-alt fa-lg" aria-hidden="true"></i> 分享</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up fa-lg" aria-hidden="true"></i> 返回顶部</a>
+    </div>
+
+  </div>
+</div>
+
+        
+        <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy; 2021 Qianying
+
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+         
+          <li><a href="/">首页</a></li>
+         
+          <li><a href="/about/">关于</a></li>
+         
+          <li><a href="/archives/">归档</a></li>
+         
+          <li><a href="/categories/">分类</a></li>
+         
+          <li><a href="https://github.com/probberechts/hexo-theme-cactus" target="_blank" rel="noopener">项目</a></li>
+         
+          <li><a href="/atom.xml">RSS</a></li>
+        
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+    </div>
+    <!-- styles -->
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+
+<link rel="stylesheet" href="/lib/justified-gallery/css/justifiedGallery.min.css">
+
+
+    <!-- jquery -->
+
+<script src="/lib/jquery/jquery.min.js"></script>
+
+
+<script src="/lib/justified-gallery/js/jquery.justifiedGallery.min.js"></script>
+
+<!-- clipboard -->
+
+  
+<script src="/lib/clipboard/clipboard.min.js"></script>
+
+  <script type="text/javascript">
+  $(function() {
+    // copy-btn HTML
+    var btn = "<span class=\"btn-copy tooltipped tooltipped-sw\" aria-label=\"复制到粘贴板!\">";
+    btn += '<i class="far fa-clone"></i>';
+    btn += '</span>'; 
+    // mount it!
+    $(".highlight .code pre").before(btn);
+    var clip = new ClipboardJS('.btn-copy', {
+      target: function(trigger) {
+        return trigger.nextElementSibling;
+      }
+    });
+    clip.on('success', function(e) {
+      e.trigger.setAttribute('aria-label', "复制成功!");
+      e.clearSelection();
+    })
+  })
+  </script>
+
+
+<script src="/js/main.js"></script>
+
+<!-- search -->
+
+<!-- Google Analytics -->
+
+    <script type="text/javascript">
+        (function(i,s,o,g,r,a,m) {i['GoogleAnalyticsObject']=r;i[r]=i[r]||function() {
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+        ga('create', 'UA-154856954-1', 'auto');
+        ga('send', 'pageview');
+    </script>
+
+<!-- Baidu Analytics -->
+
+<!-- Disqus Comments -->
+
+
+</body>
+</html>

@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang=zh>
+<head>
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="google-site-verification" content="lvyAlGlLiE0qiJrzn6oA_45GOBvNImfUeIAZ35vjf-4" />
+    <meta name="description" content="Using Fedora 33 on Windows 10 WSL2  喜欢 fedora 的小伙伴可能苦恼过这样一件事：为什么在 Microsoft Store 上 Ubuntu for WSL 是免费的，而 Fedora Remix for WSL 却需要 71 大洋（点名批评 Whitewater Foundry）。 现在把它抛在脑后吧，简单几步，用上“白嫖”的 fedora for WSL">
+<meta property="og:type" content="article">
+<meta property="og:title" content="免费在 Microsoft WSL2 上使用 fedora 33">
+<meta property="og:url" content="https://suiahae.me/Using-Fedora-33-on-Windows-10-WSL2/index.html">
+<meta property="og:site_name" content="Qianying&#39;s Balcony">
+<meta property="og:description" content="Using Fedora 33 on Windows 10 WSL2  喜欢 fedora 的小伙伴可能苦恼过这样一件事：为什么在 Microsoft Store 上 Ubuntu for WSL 是免费的，而 Fedora Remix for WSL 却需要 71 大洋（点名批评 Whitewater Foundry）。 现在把它抛在脑后吧，简单几步，用上“白嫖”的 fedora for WSL">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://suiahae.me/Using-Fedora-33-on-Windows-10-WSL2/wsl-fedora33-816x345.jpg">
+<meta property="article:published_time" content="2020-11-12T13:49:11.000Z">
+<meta property="article:modified_time" content="2020-11-19T08:32:50.624Z">
+<meta property="article:author" content="Qianying">
+<meta property="article:tag" content="WSL2">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://suiahae.me/Using-Fedora-33-on-Windows-10-WSL2/wsl-fedora33-816x345.jpg">
+    
+    
+        
+          
+              <link rel="shortcut icon" href="/images/favicon.ico">
+          
+        
+        
+          
+            <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+          
+        
+        
+          
+            <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+          
+        
+    
+    <!-- title -->
+    <title>免费在 Microsoft WSL2 上使用 fedora 33</title>
+    <!-- styles -->
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    <!-- persian styles -->
+    
+      
+<link rel="stylesheet" href="/css/rtl.css">
+
+    
+    <!-- rss -->
+    
+    
+<meta name="generator" content="Hexo 4.2.1"><link rel="alternate" href="/atom.xml" title="Qianying's Balcony" type="application/atom+xml">
+</head>
+
+<body class="max-width mx-auto px3 ltr">
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fas fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+         
+          <li><a href="/">首页</a></li>
+         
+          <li><a href="/about/">关于</a></li>
+         
+          <li><a href="/archives/">归档</a></li>
+         
+          <li><a href="/categories/">分类</a></li>
+         
+          <li><a href="https://github.com/probberechts/hexo-theme-cactus" target="_blank" rel="noopener">项目</a></li>
+         
+          <li><a href="/atom.xml">RSS</a></li>
+        
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        
+        <li><a class="icon" href="/Reinforcement-learning-Distribution-function-of-the-optimal-solution-in-Epsilon-Greedy/"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        
+        <li><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" href="#"><i class="fas fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">上一篇</span>
+      <span id="i-next" class="info" style="display:none;">下一篇</span>
+      <span id="i-top" class="info" style="display:none;">返回顶部</span>
+      <span id="i-share" class="info" style="display:none;">分享文章</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=https://suiahae.me/Using-Fedora-33-on-Windows-10-WSL2/" target="_blank" rel="noopener"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=https://suiahae.me/Using-Fedora-33-on-Windows-10-WSL2/&text=免费在 Microsoft WSL2 上使用 fedora 33" target="_blank" rel="noopener"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=https://suiahae.me/Using-Fedora-33-on-Windows-10-WSL2/&title=免费在 Microsoft WSL2 上使用 fedora 33" target="_blank" rel="noopener"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=https://suiahae.me/Using-Fedora-33-on-Windows-10-WSL2/&is_video=false&description=免费在 Microsoft WSL2 上使用 fedora 33" target="_blank" rel="noopener"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=免费在 Microsoft WSL2 上使用 fedora 33&body=Check out this article: https://suiahae.me/Using-Fedora-33-on-Windows-10-WSL2/"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=https://suiahae.me/Using-Fedora-33-on-Windows-10-WSL2/&title=免费在 Microsoft WSL2 上使用 fedora 33" target="_blank" rel="noopener"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=https://suiahae.me/Using-Fedora-33-on-Windows-10-WSL2/&title=免费在 Microsoft WSL2 上使用 fedora 33" target="_blank" rel="noopener"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=https://suiahae.me/Using-Fedora-33-on-Windows-10-WSL2/&title=免费在 Microsoft WSL2 上使用 fedora 33" target="_blank" rel="noopener"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=https://suiahae.me/Using-Fedora-33-on-Windows-10-WSL2/&title=免费在 Microsoft WSL2 上使用 fedora 33" target="_blank" rel="noopener"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=https://suiahae.me/Using-Fedora-33-on-Windows-10-WSL2/&name=免费在 Microsoft WSL2 上使用 fedora 33&description=" target="_blank" rel="noopener"><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    <div id="toc">
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Using-Fedora-33-on-Windows-10-WSL2"><span class="toc-number">1.</span> <span class="toc-text">Using Fedora 33 on Windows 10 WSL2</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-安装-Fedora-for-WSL"><span class="toc-number">1.1.</span> <span class="toc-text">1. 安装 Fedora for WSL</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-1-下载-Fedora-33-rootfs"><span class="toc-number">1.1.1.</span> <span class="toc-text">1.1 下载 Fedora 33 rootfs</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-2-导入-Fedora-33"><span class="toc-number">1.1.2.</span> <span class="toc-text">1.2 导入 Fedora 33</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-为-feodra-添加用户"><span class="toc-number">1.2.</span> <span class="toc-text">2. 为 feodra 添加用户</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-启用-Windows-集成-可选"><span class="toc-number">1.3.</span> <span class="toc-text">3. 启用 Windows 集成 [可选]</span></a></li></ol></li></ol>
+    </div>
+  </span>
+</div>
+
+    
+    <div class="content index py4">
+        
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle" itemprop="name headline">
+        免费在 Microsoft WSL2 上使用 fedora 33
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span itemprop="name">Qianying's Balcony</span>
+      </span>
+      
+    <div class="postdate">
+      
+        <time datetime="2020-11-12T13:49:11.000Z" itemprop="datePublished">2020-11-12</time>
+        
+      
+    </div>
+
+
+      
+    <div class="article-category">
+        <i class="fas fa-archive"></i>
+        <a class="category-link" href="/categories/Handbooks/">Handbooks</a> › <a class="category-link" href="/categories/Handbooks/Windows/">Windows</a>
+    </div>
+
+
+      
+    <div class="article-tag">
+        <i class="fas fa-tag"></i>
+        <a class="tag-link" href="/tags/WSL2/" rel="tag">WSL2</a>
+    </div>
+
+
+    </div>
+  </header>
+  
+
+  <div class="content" itemprop="articleBody">
+    <h1 id="Using-Fedora-33-on-Windows-10-WSL2"><a href="#Using-Fedora-33-on-Windows-10-WSL2" class="headerlink" title="Using Fedora 33 on Windows 10 WSL2"></a>Using Fedora 33 on Windows 10 WSL2</h1><img src="wsl-fedora33-816x345.jpg" alt="wsl-fedora33" style="zoom: 100%;" />
+
+<p>喜欢 fedora 的小伙伴可能苦恼过这样一件事：为什么在 Microsoft Store 上 Ubuntu for WSL 是免费的，而 <a href="https://www.microsoft.com/zh-cn/p/fedora-remix-for-wsl/9n6gdm4k2hnc?activetab=pivot:overviewtab" target="_blank" rel="noopener">Fedora Remix for WSL</a> 却需要 71 大洋（点名批评 Whitewater Foundry）。</p>
+<p>现在把它抛在脑后吧，简单几步，用上“白嫖”的 fedora for WSL：</p>
+<p><strong>以下内容译自 <a href="https://fedoramagazine.org/wsl-fedora-33/" target="_blank" rel="noopener">Using Fedora 33 with Microsoft’s WSL2 - Fedora Magazine</a></strong></p>
+<h2 id="1-安装-Fedora-for-WSL"><a href="#1-安装-Fedora-for-WSL" class="headerlink" title="1. 安装 Fedora for WSL"></a>1. 安装 Fedora for WSL</h2><h3 id="1-1-下载-Fedora-33-rootfs"><a href="#1-1-下载-Fedora-33-rootfs" class="headerlink" title="1.1 下载 Fedora 33 rootfs"></a>1.1 下载 Fedora 33 rootfs</h3><ol>
+<li><p>下载地址:<br><a href="https://raw.githubusercontent.com/fedora-cloud/docker-brew-fedora/33/x86_64/fedora-33.20201110-x86_64.tar.xz" target="_blank" rel="noopener">https://raw.githubusercontent.com/fedora-cloud/docker-brew-fedora/33/x86_64/fedora-33.20201110-x86_64.tar.xz</a></p>
+</li>
+<li><p>解压但不解包，使文件以 tar 结尾</p>
+</li>
+</ol>
+<h3 id="1-2-导入-Fedora-33"><a href="#1-2-导入-Fedora-33" class="headerlink" title="1.2 导入 Fedora 33"></a>1.2 导入 Fedora 33</h3><ol>
+<li><p>建立安装目录，例如 c:\distros</p>
+</li>
+<li><p>打开 cmd 或 powershell，导入</p>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wsl.exe -<span class="literal">-import</span> Fedora<span class="literal">-33</span> c:\distros\Fedora<span class="literal">-33</span> <span class="variable">$HOME</span>\Downloads\fedora<span class="literal">-33</span>.tar</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>查看 Fedora-33 是否导入</p>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">PS C:\Users\jperrin&gt; wsl.exe <span class="literal">-l</span> <span class="literal">-v</span></span><br><span class="line">  NAME                   STATE           VERSION</span><br><span class="line">  Fedora<span class="literal">-33</span>                 Stopped         <span class="number">2</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>启动（以 root 用户）</p>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wsl <span class="literal">-d</span> Fedora<span class="literal">-33</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>安装必要软件包</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">dnf update</span><br><span class="line">dnf install wget curl sudo ncurses dnf-plugins-core dnf-utils passwd findutils</span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<h2 id="2-为-feodra-添加用户"><a href="#2-为-feodra-添加用户" class="headerlink" title="2. 为 feodra 添加用户"></a>2. 为 feodra 添加用户</h2><ol>
+<li><p>在 Fedora-33 WSL 中输入以下命令：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">useradd -G wheel yourusername</span><br><span class="line">passwd yourusername</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>测试用户可用性</p>
+<p>退出 wsl 并以 yourusername 登陆</p>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">wsl <span class="literal">-d</span> Fedora<span class="literal">-33</span> <span class="literal">-u</span> yourusername</span><br><span class="line"><span class="variable">$id</span> <span class="literal">-u</span></span><br><span class="line"><span class="number">1000</span></span><br><span class="line"><span class="variable">$</span> sudo cat /etc/shadow</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>一切正常后在 powershell 设置 yourusername 为默认用户</p>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">Get-ItemProperty</span> Registry::HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Lxss\*\ DistributionName | <span class="built_in">Where-Object</span> <span class="literal">-Property</span> DistributionName <span class="operator">-eq</span> Fedora<span class="literal">-33</span>  | <span class="built_in">Set-ItemProperty</span> <span class="literal">-Name</span> DefaultUid <span class="literal">-Value</span> <span class="number">1000</span></span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<h2 id="3-启用-Windows-集成-可选"><a href="#3-启用-Windows-集成-可选" class="headerlink" title="3. 启用 Windows 集成 [可选]"></a>3. 启用 Windows 集成 [可选]</h2><p>在 wsl 中添加 trustywolf/wslu</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo dnf copr <span class="built_in">enable</span> trustywolf/wslu</span><br></pre></td></tr></table></figure>
+  </div>
+</article>
+
+
+
+        
+          <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/">首页</a></li>
+         
+          <li><a href="/about/">关于</a></li>
+         
+          <li><a href="/archives/">归档</a></li>
+         
+          <li><a href="/categories/">分类</a></li>
+         
+          <li><a href="https://github.com/probberechts/hexo-theme-cactus" target="_blank" rel="noopener">项目</a></li>
+         
+          <li><a href="/atom.xml">RSS</a></li>
+        
+      </ul>
+    </div>
+
+    <div id="toc-footer" style="display: none">
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Using-Fedora-33-on-Windows-10-WSL2"><span class="toc-number">1.</span> <span class="toc-text">Using Fedora 33 on Windows 10 WSL2</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-安装-Fedora-for-WSL"><span class="toc-number">1.1.</span> <span class="toc-text">1. 安装 Fedora for WSL</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-1-下载-Fedora-33-rootfs"><span class="toc-number">1.1.1.</span> <span class="toc-text">1.1 下载 Fedora 33 rootfs</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-2-导入-Fedora-33"><span class="toc-number">1.1.2.</span> <span class="toc-text">1.2 导入 Fedora 33</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-为-feodra-添加用户"><span class="toc-number">1.2.</span> <span class="toc-text">2. 为 feodra 添加用户</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-启用-Windows-集成-可选"><span class="toc-number">1.3.</span> <span class="toc-text">3. 启用 Windows 集成 [可选]</span></a></li></ol></li></ol>
+    </div>
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=https://suiahae.me/Using-Fedora-33-on-Windows-10-WSL2/" target="_blank" rel="noopener"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=https://suiahae.me/Using-Fedora-33-on-Windows-10-WSL2/&text=免费在 Microsoft WSL2 上使用 fedora 33" target="_blank" rel="noopener"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=https://suiahae.me/Using-Fedora-33-on-Windows-10-WSL2/&title=免费在 Microsoft WSL2 上使用 fedora 33" target="_blank" rel="noopener"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=https://suiahae.me/Using-Fedora-33-on-Windows-10-WSL2/&is_video=false&description=免费在 Microsoft WSL2 上使用 fedora 33" target="_blank" rel="noopener"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=免费在 Microsoft WSL2 上使用 fedora 33&body=Check out this article: https://suiahae.me/Using-Fedora-33-on-Windows-10-WSL2/"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=https://suiahae.me/Using-Fedora-33-on-Windows-10-WSL2/&title=免费在 Microsoft WSL2 上使用 fedora 33" target="_blank" rel="noopener"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=https://suiahae.me/Using-Fedora-33-on-Windows-10-WSL2/&title=免费在 Microsoft WSL2 上使用 fedora 33" target="_blank" rel="noopener"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=https://suiahae.me/Using-Fedora-33-on-Windows-10-WSL2/&title=免费在 Microsoft WSL2 上使用 fedora 33" target="_blank" rel="noopener"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=https://suiahae.me/Using-Fedora-33-on-Windows-10-WSL2/&title=免费在 Microsoft WSL2 上使用 fedora 33" target="_blank" rel="noopener"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=https://suiahae.me/Using-Fedora-33-on-Windows-10-WSL2/&name=免费在 Microsoft WSL2 上使用 fedora 33&description=" target="_blank" rel="noopener"><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fas fa-bars fa-lg" aria-hidden="true"></i> 菜单</a>
+        <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fas fa-list fa-lg" aria-hidden="true"></i> 目录</a>
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fas fa-share-alt fa-lg" aria-hidden="true"></i> 分享</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up fa-lg" aria-hidden="true"></i> 返回顶部</a>
+    </div>
+
+  </div>
+</div>
+
+        
+        <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy; 2021 Qianying
+
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+         
+          <li><a href="/">首页</a></li>
+         
+          <li><a href="/about/">关于</a></li>
+         
+          <li><a href="/archives/">归档</a></li>
+         
+          <li><a href="/categories/">分类</a></li>
+         
+          <li><a href="https://github.com/probberechts/hexo-theme-cactus" target="_blank" rel="noopener">项目</a></li>
+         
+          <li><a href="/atom.xml">RSS</a></li>
+        
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+    </div>
+    <!-- styles -->
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+
+<link rel="stylesheet" href="/lib/justified-gallery/css/justifiedGallery.min.css">
+
+
+    <!-- jquery -->
+
+<script src="/lib/jquery/jquery.min.js"></script>
+
+
+<script src="/lib/justified-gallery/js/jquery.justifiedGallery.min.js"></script>
+
+<!-- clipboard -->
+
+  
+<script src="/lib/clipboard/clipboard.min.js"></script>
+
+  <script type="text/javascript">
+  $(function() {
+    // copy-btn HTML
+    var btn = "<span class=\"btn-copy tooltipped tooltipped-sw\" aria-label=\"复制到粘贴板!\">";
+    btn += '<i class="far fa-clone"></i>';
+    btn += '</span>'; 
+    // mount it!
+    $(".highlight .code pre").before(btn);
+    var clip = new ClipboardJS('.btn-copy', {
+      target: function(trigger) {
+        return trigger.nextElementSibling;
+      }
+    });
+    clip.on('success', function(e) {
+      e.trigger.setAttribute('aria-label', "复制成功!");
+      e.clearSelection();
+    })
+  })
+  </script>
+
+
+<script src="/js/main.js"></script>
+
+<!-- search -->
+
+<!-- Google Analytics -->
+
+    <script type="text/javascript">
+        (function(i,s,o,g,r,a,m) {i['GoogleAnalyticsObject']=r;i[r]=i[r]||function() {
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+        ga('create', 'UA-154856954-1', 'auto');
+        ga('send', 'pageview');
+    </script>
+
+<!-- Baidu Analytics -->
+
+<!-- Disqus Comments -->
+
+
+</body>
+</html>

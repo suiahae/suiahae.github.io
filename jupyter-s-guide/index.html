@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang=zh>
+<head>
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="google-site-verification" content="lvyAlGlLiE0qiJrzn6oA_45GOBvNImfUeIAZ35vjf-4" />
+    <meta name="description" content="jupyter notebook’s guide0. 更改工作空间 &amp;&amp; 切换运行内核0.1 jupyter 初始工作空间的修改 创建目标文件夹，例如 jupyter-notebook 。  生成配置文件  1jupyter notebook --generate-config    编辑生成的配置文件 找到这个配置项 #c.NotebookApp.notebook_dir &#x3D; &amp;">
+<meta property="og:type" content="article">
+<meta property="og:title" content="jupyter&#39;s 使用指南">
+<meta property="og:url" content="https://suiahae.me/jupyter-s-guide/index.html">
+<meta property="og:site_name" content="Qianying&#39;s Balcony">
+<meta property="og:description" content="jupyter notebook’s guide0. 更改工作空间 &amp;&amp; 切换运行内核0.1 jupyter 初始工作空间的修改 创建目标文件夹，例如 jupyter-notebook 。  生成配置文件  1jupyter notebook --generate-config    编辑生成的配置文件 找到这个配置项 #c.NotebookApp.notebook_dir &#x3D; &amp;">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://suiahae.me/jupyter-s-guide/image-20200229203107904.png">
+<meta property="og:image" content="https://suiahae.me/jupyter-s-guide/image-20200229203322871.png">
+<meta property="og:image" content="https://suiahae.me/jupyter-s-guide/image-20200229203747368.png">
+<meta property="og:image" content="https://suiahae.me/jupyter-s-guide/image-20200229201737769.png">
+<meta property="article:published_time" content="2020-02-29T11:59:35.000Z">
+<meta property="article:modified_time" content="2020-07-17T14:49:56.847Z">
+<meta property="article:author" content="Qianying">
+<meta property="article:tag" content="conda">
+<meta property="article:tag" content="jupyter">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://suiahae.me/jupyter-s-guide/image-20200229203107904.png">
+    
+    
+        
+          
+              <link rel="shortcut icon" href="/images/favicon.ico">
+          
+        
+        
+          
+            <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+          
+        
+        
+          
+            <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+          
+        
+    
+    <!-- title -->
+    <title>jupyter&#39;s 使用指南</title>
+    <!-- styles -->
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    <!-- persian styles -->
+    
+      
+<link rel="stylesheet" href="/css/rtl.css">
+
+    
+    <!-- rss -->
+    
+    
+<meta name="generator" content="Hexo 4.2.1"><link rel="alternate" href="/atom.xml" title="Qianying's Balcony" type="application/atom+xml">
+</head>
+
+<body class="max-width mx-auto px3 ltr">
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fas fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+         
+          <li><a href="/">首页</a></li>
+         
+          <li><a href="/about/">关于</a></li>
+         
+          <li><a href="/archives/">归档</a></li>
+         
+          <li><a href="/categories/">分类</a></li>
+         
+          <li><a href="https://github.com/probberechts/hexo-theme-cactus" target="_blank" rel="noopener">项目</a></li>
+         
+          <li><a href="/atom.xml">RSS</a></li>
+        
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        <li><a class="icon" href="/how-to-install-MicroSoft-fonts-for-Linux/"><i class="fas fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i></a></li>
+        
+        
+        <li><a class="icon" href="/new-conda-using-error/"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        
+        <li><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" href="#"><i class="fas fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">上一篇</span>
+      <span id="i-next" class="info" style="display:none;">下一篇</span>
+      <span id="i-top" class="info" style="display:none;">返回顶部</span>
+      <span id="i-share" class="info" style="display:none;">分享文章</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=https://suiahae.me/jupyter-s-guide/" target="_blank" rel="noopener"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=https://suiahae.me/jupyter-s-guide/&text=jupyter&#39;s 使用指南" target="_blank" rel="noopener"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=https://suiahae.me/jupyter-s-guide/&title=jupyter&#39;s 使用指南" target="_blank" rel="noopener"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=https://suiahae.me/jupyter-s-guide/&is_video=false&description=jupyter&#39;s 使用指南" target="_blank" rel="noopener"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=jupyter&#39;s 使用指南&body=Check out this article: https://suiahae.me/jupyter-s-guide/"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=https://suiahae.me/jupyter-s-guide/&title=jupyter&#39;s 使用指南" target="_blank" rel="noopener"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=https://suiahae.me/jupyter-s-guide/&title=jupyter&#39;s 使用指南" target="_blank" rel="noopener"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=https://suiahae.me/jupyter-s-guide/&title=jupyter&#39;s 使用指南" target="_blank" rel="noopener"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=https://suiahae.me/jupyter-s-guide/&title=jupyter&#39;s 使用指南" target="_blank" rel="noopener"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=https://suiahae.me/jupyter-s-guide/&name=jupyter&#39;s 使用指南&description=" target="_blank" rel="noopener"><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    <div id="toc">
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#jupyter-notebook’s-guide"><span class="toc-number">1.</span> <span class="toc-text">jupyter notebook’s guide</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#0-更改工作空间-amp-amp-切换运行内核"><span class="toc-number">1.1.</span> <span class="toc-text">0. 更改工作空间 &amp;&amp; 切换运行内核</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#0-1-jupyter-初始工作空间的修改"><span class="toc-number">1.1.1.</span> <span class="toc-text">0.1 jupyter 初始工作空间的修改</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#0-2-切换内核"><span class="toc-number">1.1.2.</span> <span class="toc-text">0.2 切换内核</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-安装-jupyter"><span class="toc-number">1.2.</span> <span class="toc-text">1. 安装 jupyter</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-1-Anaconda-自带"><span class="toc-number">1.2.1.</span> <span class="toc-text">1.1 Anaconda 自带</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-2-使用-pip-安装"><span class="toc-number">1.2.2.</span> <span class="toc-text">1.2 使用 pip 安装</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-3-使用-conda-安装"><span class="toc-number">1.2.3.</span> <span class="toc-text">1.3 使用 conda 安装</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-卸载-jupyter"><span class="toc-number">1.3.</span> <span class="toc-text">2. 卸载 jupyter</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-使用-jupyter"><span class="toc-number">1.4.</span> <span class="toc-text">3. 使用 jupyter</span></a></li></ol></li></ol>
+    </div>
+  </span>
+</div>
+
+    
+    <div class="content index py4">
+        
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle" itemprop="name headline">
+        jupyter&#39;s 使用指南
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span itemprop="name">Qianying's Balcony</span>
+      </span>
+      
+    <div class="postdate">
+      
+        <time datetime="2020-02-29T11:59:35.000Z" itemprop="datePublished">2020-02-29</time>
+        
+      
+    </div>
+
+
+      
+    <div class="article-category">
+        <i class="fas fa-archive"></i>
+        <a class="category-link" href="/categories/Handbooks/">Handbooks</a> › <a class="category-link" href="/categories/Handbooks/conda/">conda</a>
+    </div>
+
+
+      
+    <div class="article-tag">
+        <i class="fas fa-tag"></i>
+        <a class="tag-link" href="/tags/conda/" rel="tag">conda</a>, <a class="tag-link" href="/tags/jupyter/" rel="tag">jupyter</a>
+    </div>
+
+
+    </div>
+  </header>
+  
+
+  <div class="content" itemprop="articleBody">
+    <h1 id="jupyter-notebook’s-guide"><a href="#jupyter-notebook’s-guide" class="headerlink" title="jupyter notebook’s guide"></a>jupyter notebook’s guide</h1><h2 id="0-更改工作空间-amp-amp-切换运行内核"><a href="#0-更改工作空间-amp-amp-切换运行内核" class="headerlink" title="0. 更改工作空间 &amp;&amp; 切换运行内核"></a>0. 更改工作空间 &amp;&amp; 切换运行内核</h2><h3 id="0-1-jupyter-初始工作空间的修改"><a href="#0-1-jupyter-初始工作空间的修改" class="headerlink" title="0.1 jupyter 初始工作空间的修改"></a>0.1 jupyter 初始工作空间的修改</h3><ol>
+<li><p>创建目标文件夹，例如 <code>jupyter-notebook</code> 。</p>
+</li>
+<li><p>生成配置文件 </p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">jupyter notebook --generate-config</span><br></pre></td></tr></table></figure>
+
+<p><img src="image-20200229203107904.png" alt="image-20200229203107904"></p>
+</li>
+<li><p>编辑生成的配置文件</p>
+<p>找到这个配置项 <code>#c.NotebookApp.notebook_dir = &#39;&#39;</code></p>
+<p><img src="image-20200229203322871.png" alt="image-20200229203322871"></p>
+<p>更改为即可。</p>
+<p><img src="image-20200229203747368.png" alt="image-20200229203747368"></p>
+</li>
+</ol>
+<h3 id="0-2-切换内核"><a href="#0-2-切换内核" class="headerlink" title="0.2 切换内核"></a>0.2 切换内核</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 每个环境都需要安装 ipykernel</span></span><br><span class="line">conda install ipykernel</span><br><span class="line"><span class="comment"># 激活对应的 conda 环境,例如 tensorflow_env</span></span><br><span class="line">conda activate tensorflow_env</span><br><span class="line"><span class="comment"># 将环境写入 Notebook 的 kernel 中</span></span><br><span class="line">python -m ipykernel install --user --name tensorflow_env --display-name <span class="string">"Python (tensorflow)"</span></span><br></pre></td></tr></table></figure>
+
+<p>在 Jupyter Notebook 里切换即可。</p>
+<p>以下内容可略。</p>
+<hr>
+<h2 id="1-安装-jupyter"><a href="#1-安装-jupyter" class="headerlink" title="1. 安装 jupyter"></a>1. 安装 jupyter</h2><h3 id="1-1-Anaconda-自带"><a href="#1-1-Anaconda-自带" class="headerlink" title="1.1 Anaconda 自带"></a>1.1 Anaconda 自带</h3><h3 id="1-2-使用-pip-安装"><a href="#1-2-使用-pip-安装" class="headerlink" title="1.2 使用 pip 安装"></a>1.2 使用 pip 安装</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip install jupyther</span><br></pre></td></tr></table></figure>
+
+<h3 id="1-3-使用-conda-安装"><a href="#1-3-使用-conda-安装" class="headerlink" title="1.3 使用 conda 安装"></a>1.3 使用 conda 安装</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">conda install jupyter</span><br></pre></td></tr></table></figure>
+
+<h2 id="2-卸载-jupyter"><a href="#2-卸载-jupyter" class="headerlink" title="2. 卸载 jupyter"></a>2. 卸载 jupyter</h2><p>使用 <code>pip uninstall jupyter</code> 是卸不掉 jupyter 的，需要用到 pip-autoremove，它会卸载掉package和无用的依赖。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">pip install pip-autoremove</span><br><span class="line">pip-autoremove jupyter -y</span><br></pre></td></tr></table></figure>
+
+<p>或者使用 conda 卸载。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">conda uninstall jupyter notebook</span><br></pre></td></tr></table></figure>
+
+<h2 id="3-使用-jupyter"><a href="#3-使用-jupyter" class="headerlink" title="3. 使用 jupyter"></a>3. 使用 jupyter</h2><p><strong>打开 jupyter</strong></p>
+<ul>
+<li><p>一般可以通过在Anaconda Powershell Prompt 中输入命令 <code>jupyter notebook</code>。</p>
+</li>
+<li><p>创建 jupyter notebook 快捷方式</p>
+<p>找到 <code>Scripts</code>目录下 <code>jupyter-notebook.exe</code>并创建快捷方式。</p>
+<p><img src="image-20200229201737769.png" alt="image-20200229201737769"></p>
+</li>
+</ul>
+
+  </div>
+</article>
+
+
+
+        
+          <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/">首页</a></li>
+         
+          <li><a href="/about/">关于</a></li>
+         
+          <li><a href="/archives/">归档</a></li>
+         
+          <li><a href="/categories/">分类</a></li>
+         
+          <li><a href="https://github.com/probberechts/hexo-theme-cactus" target="_blank" rel="noopener">项目</a></li>
+         
+          <li><a href="/atom.xml">RSS</a></li>
+        
+      </ul>
+    </div>
+
+    <div id="toc-footer" style="display: none">
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#jupyter-notebook’s-guide"><span class="toc-number">1.</span> <span class="toc-text">jupyter notebook’s guide</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#0-更改工作空间-amp-amp-切换运行内核"><span class="toc-number">1.1.</span> <span class="toc-text">0. 更改工作空间 &amp;&amp; 切换运行内核</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#0-1-jupyter-初始工作空间的修改"><span class="toc-number">1.1.1.</span> <span class="toc-text">0.1 jupyter 初始工作空间的修改</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#0-2-切换内核"><span class="toc-number">1.1.2.</span> <span class="toc-text">0.2 切换内核</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-安装-jupyter"><span class="toc-number">1.2.</span> <span class="toc-text">1. 安装 jupyter</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-1-Anaconda-自带"><span class="toc-number">1.2.1.</span> <span class="toc-text">1.1 Anaconda 自带</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-2-使用-pip-安装"><span class="toc-number">1.2.2.</span> <span class="toc-text">1.2 使用 pip 安装</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-3-使用-conda-安装"><span class="toc-number">1.2.3.</span> <span class="toc-text">1.3 使用 conda 安装</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-卸载-jupyter"><span class="toc-number">1.3.</span> <span class="toc-text">2. 卸载 jupyter</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-使用-jupyter"><span class="toc-number">1.4.</span> <span class="toc-text">3. 使用 jupyter</span></a></li></ol></li></ol>
+    </div>
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=https://suiahae.me/jupyter-s-guide/" target="_blank" rel="noopener"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=https://suiahae.me/jupyter-s-guide/&text=jupyter&#39;s 使用指南" target="_blank" rel="noopener"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=https://suiahae.me/jupyter-s-guide/&title=jupyter&#39;s 使用指南" target="_blank" rel="noopener"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=https://suiahae.me/jupyter-s-guide/&is_video=false&description=jupyter&#39;s 使用指南" target="_blank" rel="noopener"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=jupyter&#39;s 使用指南&body=Check out this article: https://suiahae.me/jupyter-s-guide/"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=https://suiahae.me/jupyter-s-guide/&title=jupyter&#39;s 使用指南" target="_blank" rel="noopener"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=https://suiahae.me/jupyter-s-guide/&title=jupyter&#39;s 使用指南" target="_blank" rel="noopener"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=https://suiahae.me/jupyter-s-guide/&title=jupyter&#39;s 使用指南" target="_blank" rel="noopener"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=https://suiahae.me/jupyter-s-guide/&title=jupyter&#39;s 使用指南" target="_blank" rel="noopener"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=https://suiahae.me/jupyter-s-guide/&name=jupyter&#39;s 使用指南&description=" target="_blank" rel="noopener"><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fas fa-bars fa-lg" aria-hidden="true"></i> 菜单</a>
+        <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fas fa-list fa-lg" aria-hidden="true"></i> 目录</a>
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fas fa-share-alt fa-lg" aria-hidden="true"></i> 分享</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up fa-lg" aria-hidden="true"></i> 返回顶部</a>
+    </div>
+
+  </div>
+</div>
+
+        
+        <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy; 2021 Qianying
+
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+         
+          <li><a href="/">首页</a></li>
+         
+          <li><a href="/about/">关于</a></li>
+         
+          <li><a href="/archives/">归档</a></li>
+         
+          <li><a href="/categories/">分类</a></li>
+         
+          <li><a href="https://github.com/probberechts/hexo-theme-cactus" target="_blank" rel="noopener">项目</a></li>
+         
+          <li><a href="/atom.xml">RSS</a></li>
+        
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+    </div>
+    <!-- styles -->
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+
+<link rel="stylesheet" href="/lib/justified-gallery/css/justifiedGallery.min.css">
+
+
+    <!-- jquery -->
+
+<script src="/lib/jquery/jquery.min.js"></script>
+
+
+<script src="/lib/justified-gallery/js/jquery.justifiedGallery.min.js"></script>
+
+<!-- clipboard -->
+
+  
+<script src="/lib/clipboard/clipboard.min.js"></script>
+
+  <script type="text/javascript">
+  $(function() {
+    // copy-btn HTML
+    var btn = "<span class=\"btn-copy tooltipped tooltipped-sw\" aria-label=\"复制到粘贴板!\">";
+    btn += '<i class="far fa-clone"></i>';
+    btn += '</span>'; 
+    // mount it!
+    $(".highlight .code pre").before(btn);
+    var clip = new ClipboardJS('.btn-copy', {
+      target: function(trigger) {
+        return trigger.nextElementSibling;
+      }
+    });
+    clip.on('success', function(e) {
+      e.trigger.setAttribute('aria-label', "复制成功!");
+      e.clearSelection();
+    })
+  })
+  </script>
+
+
+<script src="/js/main.js"></script>
+
+<!-- search -->
+
+<!-- Google Analytics -->
+
+    <script type="text/javascript">
+        (function(i,s,o,g,r,a,m) {i['GoogleAnalyticsObject']=r;i[r]=i[r]||function() {
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+        ga('create', 'UA-154856954-1', 'auto');
+        ga('send', 'pageview');
+    </script>
+
+<!-- Baidu Analytics -->
+
+<!-- Disqus Comments -->
+
+
+</body>
+</html>

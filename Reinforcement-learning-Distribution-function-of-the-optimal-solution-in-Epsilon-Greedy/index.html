@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang=zh>
+<head>
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="google-site-verification" content="lvyAlGlLiE0qiJrzn6oA_45GOBvNImfUeIAZ35vjf-4" />
+    <meta name="description" content="[Reinforcement learning] Distribution function of the optimal solution in Epsilon-Greedy任一环节，解集（动作集）A&#x3D;{解1，解2，解3，……，解i，……，解n-1，解n}，其中|A|&#x3D;n。 不妨假定最优解为x。 ​    在选择解时，按照概率有两种选择策略： ​        其一，均匀随机选择，也叫非贪心选择">
+<meta property="og:type" content="article">
+<meta property="og:title" content="[强化学习] ε-贪心算法中的最优解的分布函数">
+<meta property="og:url" content="https://suiahae.me/Reinforcement-learning-Distribution-function-of-the-optimal-solution-in-Epsilon-Greedy/index.html">
+<meta property="og:site_name" content="Qianying&#39;s Balcony">
+<meta property="og:description" content="[Reinforcement learning] Distribution function of the optimal solution in Epsilon-Greedy任一环节，解集（动作集）A&#x3D;{解1，解2，解3，……，解i，……，解n-1，解n}，其中|A|&#x3D;n。 不妨假定最优解为x。 ​    在选择解时，按照概率有两种选择策略： ​        其一，均匀随机选择，也叫非贪心选择">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://suiahae.me/Reinforcement-learning-Distribution-function-of-the-optimal-solution-in-Epsilon-Greedy/image-20200824152221326.png">
+<meta property="article:published_time" content="2020-08-24T07:13:52.000Z">
+<meta property="article:modified_time" content="2020-08-24T07:22:32.145Z">
+<meta property="article:author" content="Qianying">
+<meta property="article:tag" content="AI">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://suiahae.me/Reinforcement-learning-Distribution-function-of-the-optimal-solution-in-Epsilon-Greedy/image-20200824152221326.png">
+    
+    
+        
+          
+              <link rel="shortcut icon" href="/images/favicon.ico">
+          
+        
+        
+          
+            <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+          
+        
+        
+          
+            <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+          
+        
+    
+    <!-- title -->
+    <title>[强化学习] ε-贪心算法中的最优解的分布函数</title>
+    <!-- styles -->
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    <!-- persian styles -->
+    
+      
+<link rel="stylesheet" href="/css/rtl.css">
+
+    
+    <!-- rss -->
+    
+    
+<meta name="generator" content="Hexo 4.2.1"><link rel="alternate" href="/atom.xml" title="Qianying's Balcony" type="application/atom+xml">
+</head>
+
+<body class="max-width mx-auto px3 ltr">
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fas fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+         
+          <li><a href="/">首页</a></li>
+         
+          <li><a href="/about/">关于</a></li>
+         
+          <li><a href="/archives/">归档</a></li>
+         
+          <li><a href="/categories/">分类</a></li>
+         
+          <li><a href="https://github.com/probberechts/hexo-theme-cactus" target="_blank" rel="noopener">项目</a></li>
+         
+          <li><a href="/atom.xml">RSS</a></li>
+        
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        <li><a class="icon" href="/Using-Fedora-33-on-Windows-10-WSL2/"><i class="fas fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i></a></li>
+        
+        
+        <li><a class="icon" href="/How-to-install-a-web-application-on-FireFox/"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        
+        <li><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" href="#"><i class="fas fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">上一篇</span>
+      <span id="i-next" class="info" style="display:none;">下一篇</span>
+      <span id="i-top" class="info" style="display:none;">返回顶部</span>
+      <span id="i-share" class="info" style="display:none;">分享文章</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=https://suiahae.me/Reinforcement-learning-Distribution-function-of-the-optimal-solution-in-Epsilon-Greedy/" target="_blank" rel="noopener"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=https://suiahae.me/Reinforcement-learning-Distribution-function-of-the-optimal-solution-in-Epsilon-Greedy/&text=[强化学习] ε-贪心算法中的最优解的分布函数" target="_blank" rel="noopener"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=https://suiahae.me/Reinforcement-learning-Distribution-function-of-the-optimal-solution-in-Epsilon-Greedy/&title=[强化学习] ε-贪心算法中的最优解的分布函数" target="_blank" rel="noopener"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=https://suiahae.me/Reinforcement-learning-Distribution-function-of-the-optimal-solution-in-Epsilon-Greedy/&is_video=false&description=[强化学习] ε-贪心算法中的最优解的分布函数" target="_blank" rel="noopener"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=[强化学习] ε-贪心算法中的最优解的分布函数&body=Check out this article: https://suiahae.me/Reinforcement-learning-Distribution-function-of-the-optimal-solution-in-Epsilon-Greedy/"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=https://suiahae.me/Reinforcement-learning-Distribution-function-of-the-optimal-solution-in-Epsilon-Greedy/&title=[强化学习] ε-贪心算法中的最优解的分布函数" target="_blank" rel="noopener"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=https://suiahae.me/Reinforcement-learning-Distribution-function-of-the-optimal-solution-in-Epsilon-Greedy/&title=[强化学习] ε-贪心算法中的最优解的分布函数" target="_blank" rel="noopener"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=https://suiahae.me/Reinforcement-learning-Distribution-function-of-the-optimal-solution-in-Epsilon-Greedy/&title=[强化学习] ε-贪心算法中的最优解的分布函数" target="_blank" rel="noopener"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=https://suiahae.me/Reinforcement-learning-Distribution-function-of-the-optimal-solution-in-Epsilon-Greedy/&title=[强化学习] ε-贪心算法中的最优解的分布函数" target="_blank" rel="noopener"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=https://suiahae.me/Reinforcement-learning-Distribution-function-of-the-optimal-solution-in-Epsilon-Greedy/&name=[强化学习] ε-贪心算法中的最优解的分布函数&description=" target="_blank" rel="noopener"><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    <div id="toc">
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Reinforcement-learning-Distribution-function-of-the-optimal-solution-in-Epsilon-Greedy"><span class="toc-number">1.</span> <span class="toc-text">[Reinforcement learning] Distribution function of the optimal solution in Epsilon-Greedy</span></a></li></ol>
+    </div>
+  </span>
+</div>
+
+    
+    <div class="content index py4">
+        
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle" itemprop="name headline">
+        [强化学习] ε-贪心算法中的最优解的分布函数
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span itemprop="name">Qianying's Balcony</span>
+      </span>
+      
+    <div class="postdate">
+      
+        <time datetime="2020-08-24T07:13:52.000Z" itemprop="datePublished">2020-08-24</time>
+        
+      
+    </div>
+
+
+      
+    <div class="article-category">
+        <i class="fas fa-archive"></i>
+        <a class="category-link" href="/categories/Algorithm/">Algorithm</a> › <a class="category-link" href="/categories/Algorithm/machine-learning/">machine learning</a>
+    </div>
+
+
+      
+    <div class="article-tag">
+        <i class="fas fa-tag"></i>
+        <a class="tag-link" href="/tags/AI/" rel="tag">AI</a>
+    </div>
+
+
+    </div>
+  </header>
+  
+
+  <div class="content" itemprop="articleBody">
+    <h1 id="Reinforcement-learning-Distribution-function-of-the-optimal-solution-in-Epsilon-Greedy"><a href="#Reinforcement-learning-Distribution-function-of-the-optimal-solution-in-Epsilon-Greedy" class="headerlink" title="[Reinforcement learning] Distribution function of the optimal solution in Epsilon-Greedy"></a>[Reinforcement learning] Distribution function of the optimal solution in Epsilon-Greedy</h1><p>任一环节，解集（动作集）A={解1，解2，解3，……，解i，……，解n-1，解n}，其中|A|=n。</p>
+<p>不妨假定最优解为x。</p>
+<p>​    在选择解时，按照概率有两种选择策略：</p>
+<p>​        其一，均匀随机选择，也叫非贪心选择，选用此策略的概率为ε。</p>
+<p>​        其二，直接选择最优解，也叫贪心选择，选用此策略的概率为1-ε。</p>
+<p>现在我们需要解出在此环节中每个解被选中的概率分布。</p>
+<ol>
+<li>在均匀随机选择（非贪心选择）的情况下，每个解被选中的概率为ε/|A|（包括最优解“x”和A中其他非最优解）。即在均匀随机选择（非贪心选择）的情况下，最优解“x”被选中的概率为ε/|A|，每一个非最优解被选中的概率也是ε/|A|。</li>
+<li>在直接选择最优解（贪心选择）的情况下，最优解“x”被选择的概率为1-ε，其他非最优解被选中的概率为0。</li>
+</ol>
+<p>故最优解“x”被选中的概率为1-ε+ε/|A|。则概率分布函数为</p>
+<p><img src="image-20200824152221326.png" alt="image-20200824152221326"></p>
+<!-- $$
+F(x)=\left\{\begin{matrix}
+1-\varepsilon +\frac{\varepsilon }{\left | A \right |}&，x是最优解\\ 
+\frac{\varepsilon }{\left | A \right |}&，x不是最优解
+\end{matrix}\right.
+$$ -->
+  </div>
+</article>
+
+
+
+        
+          <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/">首页</a></li>
+         
+          <li><a href="/about/">关于</a></li>
+         
+          <li><a href="/archives/">归档</a></li>
+         
+          <li><a href="/categories/">分类</a></li>
+         
+          <li><a href="https://github.com/probberechts/hexo-theme-cactus" target="_blank" rel="noopener">项目</a></li>
+         
+          <li><a href="/atom.xml">RSS</a></li>
+        
+      </ul>
+    </div>
+
+    <div id="toc-footer" style="display: none">
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Reinforcement-learning-Distribution-function-of-the-optimal-solution-in-Epsilon-Greedy"><span class="toc-number">1.</span> <span class="toc-text">[Reinforcement learning] Distribution function of the optimal solution in Epsilon-Greedy</span></a></li></ol>
+    </div>
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=https://suiahae.me/Reinforcement-learning-Distribution-function-of-the-optimal-solution-in-Epsilon-Greedy/" target="_blank" rel="noopener"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=https://suiahae.me/Reinforcement-learning-Distribution-function-of-the-optimal-solution-in-Epsilon-Greedy/&text=[强化学习] ε-贪心算法中的最优解的分布函数" target="_blank" rel="noopener"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=https://suiahae.me/Reinforcement-learning-Distribution-function-of-the-optimal-solution-in-Epsilon-Greedy/&title=[强化学习] ε-贪心算法中的最优解的分布函数" target="_blank" rel="noopener"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=https://suiahae.me/Reinforcement-learning-Distribution-function-of-the-optimal-solution-in-Epsilon-Greedy/&is_video=false&description=[强化学习] ε-贪心算法中的最优解的分布函数" target="_blank" rel="noopener"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=[强化学习] ε-贪心算法中的最优解的分布函数&body=Check out this article: https://suiahae.me/Reinforcement-learning-Distribution-function-of-the-optimal-solution-in-Epsilon-Greedy/"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=https://suiahae.me/Reinforcement-learning-Distribution-function-of-the-optimal-solution-in-Epsilon-Greedy/&title=[强化学习] ε-贪心算法中的最优解的分布函数" target="_blank" rel="noopener"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=https://suiahae.me/Reinforcement-learning-Distribution-function-of-the-optimal-solution-in-Epsilon-Greedy/&title=[强化学习] ε-贪心算法中的最优解的分布函数" target="_blank" rel="noopener"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=https://suiahae.me/Reinforcement-learning-Distribution-function-of-the-optimal-solution-in-Epsilon-Greedy/&title=[强化学习] ε-贪心算法中的最优解的分布函数" target="_blank" rel="noopener"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=https://suiahae.me/Reinforcement-learning-Distribution-function-of-the-optimal-solution-in-Epsilon-Greedy/&title=[强化学习] ε-贪心算法中的最优解的分布函数" target="_blank" rel="noopener"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=https://suiahae.me/Reinforcement-learning-Distribution-function-of-the-optimal-solution-in-Epsilon-Greedy/&name=[强化学习] ε-贪心算法中的最优解的分布函数&description=" target="_blank" rel="noopener"><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fas fa-bars fa-lg" aria-hidden="true"></i> 菜单</a>
+        <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fas fa-list fa-lg" aria-hidden="true"></i> 目录</a>
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fas fa-share-alt fa-lg" aria-hidden="true"></i> 分享</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up fa-lg" aria-hidden="true"></i> 返回顶部</a>
+    </div>
+
+  </div>
+</div>
+
+        
+        <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy; 2021 Qianying
+
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+         
+          <li><a href="/">首页</a></li>
+         
+          <li><a href="/about/">关于</a></li>
+         
+          <li><a href="/archives/">归档</a></li>
+         
+          <li><a href="/categories/">分类</a></li>
+         
+          <li><a href="https://github.com/probberechts/hexo-theme-cactus" target="_blank" rel="noopener">项目</a></li>
+         
+          <li><a href="/atom.xml">RSS</a></li>
+        
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+    </div>
+    <!-- styles -->
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+
+<link rel="stylesheet" href="/lib/justified-gallery/css/justifiedGallery.min.css">
+
+
+    <!-- jquery -->
+
+<script src="/lib/jquery/jquery.min.js"></script>
+
+
+<script src="/lib/justified-gallery/js/jquery.justifiedGallery.min.js"></script>
+
+<!-- clipboard -->
+
+  
+<script src="/lib/clipboard/clipboard.min.js"></script>
+
+  <script type="text/javascript">
+  $(function() {
+    // copy-btn HTML
+    var btn = "<span class=\"btn-copy tooltipped tooltipped-sw\" aria-label=\"复制到粘贴板!\">";
+    btn += '<i class="far fa-clone"></i>';
+    btn += '</span>'; 
+    // mount it!
+    $(".highlight .code pre").before(btn);
+    var clip = new ClipboardJS('.btn-copy', {
+      target: function(trigger) {
+        return trigger.nextElementSibling;
+      }
+    });
+    clip.on('success', function(e) {
+      e.trigger.setAttribute('aria-label', "复制成功!");
+      e.clearSelection();
+    })
+  })
+  </script>
+
+
+<script src="/js/main.js"></script>
+
+<!-- search -->
+
+<!-- Google Analytics -->
+
+    <script type="text/javascript">
+        (function(i,s,o,g,r,a,m) {i['GoogleAnalyticsObject']=r;i[r]=i[r]||function() {
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+        ga('create', 'UA-154856954-1', 'auto');
+        ga('send', 'pageview');
+    </script>
+
+<!-- Baidu Analytics -->
+
+<!-- Disqus Comments -->
+
+
+</body>
+</html>
